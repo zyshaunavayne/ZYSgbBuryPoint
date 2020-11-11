@@ -6,7 +6,4 @@
 //
 
 #import <Foundation/Foundation.h>
-
-@interface ZYBuryPoint : NSObject
-
-@end
+#import "ZYBuryPointManager.h"
