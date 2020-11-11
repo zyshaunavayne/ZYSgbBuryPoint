@@ -9,5 +9,5 @@ Pod::Spec.new do |spec|
   spec.license      = "MIT"
   spec.author             = { "zhangyushaunavayne" => "shaunavayne@vip.qq.com" }
   spec.source       = { git: "https://github.com/zyshaunavayne/ZYSgbBuryPoint.git", tag: spec.version, submodules: true }
-  spec.source_files  = "ZYSgbBuryPoint*"
+  spec.source_files  = "ZYSgbBuryPoint*","ZYBuryPoint*"
 end
