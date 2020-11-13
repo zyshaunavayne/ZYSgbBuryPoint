@@ -12,6 +12,7 @@ NS_ASSUME_NONNULL_BEGIN
 
 @interface UIViewController (Runtime)
 
+/// 开启
 + (void)share;
 
 @end

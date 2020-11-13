@@ -27,7 +27,6 @@ NS_ASSUME_NONNULL_BEGIN
 /// 基础埋点操作
 - (void)requestBaseBuryPointAction;
 
-//埋点操作
 /// 入参
 @property (nonatomic, strong) ZYBuryPointRequestModel *requestModel;
 
