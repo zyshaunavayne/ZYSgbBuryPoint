@@ -9,9 +9,15 @@
 #import "ZYBuryPointRequest.h"
 #import "ZYBuryPointProcess.h"
 
+//需要依赖AFNetworking
+#import <AFNetworking.h>
+
 static NSString *firstTimeKey = @"ZYBuryPointRequest+FirstTime";
 static NSString *firstOpenKey = @"ZYBuryPointRequest+firstOpenKey";
 
+@interface ZYBuryPointRequest ()
+@property (nonatomic, assign) BOOL netType;
+@end
 @implementation ZYBuryPointRequest
 
 + (instancetype)shareBPR
@@ -23,6 +29,7 @@ static NSString *firstOpenKey = @"ZYBuryPointRequest+firstOpenKey";
 {
     if (!_requestBaseModel) {
         [self archiveFirstTime];
+        [self getNetTypeStatus];
         _requestBaseModel = ZYBuryPointRequestBaseModel.alloc.init;
         _requestBaseModel.operatingSystem = @"iOS";
         _requestBaseModel.phoneCoode = NSUUID.UUID.UUIDString;;
@@ -105,12 +112,11 @@ static NSString *firstOpenKey = @"ZYBuryPointRequest+firstOpenKey";
             proDic:(NSMutableDictionary *)proDic
            success:(void (^)(id _Nonnull))result
 {
-    
-}
 
-/*
-{
-    //无网退出
+    if (!_netType) {
+        [self getNetTypeStatus];
+        return;
+    }
     
     dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^{
         
@@ -132,16 +138,16 @@ static NSString *firstOpenKey = @"ZYBuryPointRequest+firstOpenKey";
         NSDictionary *infoDic = [self proDictionaryWithProDic:proDic url:url];
         
         //发起POST访问
-        [manager POST:url parameters:infoDic progress:^(NSProgress * _Nonnull uploadProgress) {
+        [manager POST:url parameters:infoDic headers:nil progress:^(NSProgress * _Nonnull uploadProgress) {
         } success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
             NSDictionary *dic = [self check:responseObject :url];
             if ([[dic objectForKey:@"state"] isEqualToString:@"OK"]) {
                 result(dic);
             }else{
-                DLog(@"接口返回数据异常");
+                NSLog(@"接口返回数据异常");
             }
         } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
-            DLog(@"POST连接服务器异常 == %@",[error description]);
+            NSLog(@"POST连接服务器异常 == %@",[error description]);
         }];
     });
 }
@@ -169,7 +175,6 @@ static NSString *firstOpenKey = @"ZYBuryPointRequest+firstOpenKey";
 
 - (NSDictionary *)proDictionaryWithProDic:(NSMutableDictionary *)proDic url:(NSString *)url
 {
-    DLog(@"POST请求接口 == %@\n POST接口入参 == %@",url,[ZYDetaileProcessing dicToJson:proDic]);
     return proDic;
 }
 
@@ -189,8 +194,20 @@ static NSString *firstOpenKey = @"ZYBuryPointRequest+firstOpenKey";
             dictionary = nil;
         }
     }
-    DLog(@"POST请求数据URL == %@ \nPOST返回数据 Json == %@", url,[ZYDetaileProcessing dicToJson:dictionary]);
+    NSLog(@"dictionary == %@",dictionary);
     return dictionary;
 }
-*/
+
+- (void)getNetTypeStatus
+{
+    [[AFNetworkReachabilityManager sharedManager] startMonitoring];
+    [[AFNetworkReachabilityManager sharedManager ] setReachabilityStatusChangeBlock:^(AFNetworkReachabilityStatus status) {
+        if(status ==AFNetworkReachabilityStatusReachableViaWWAN || status == AFNetworkReachabilityStatusReachableViaWiFi) {
+            self.netType = YES;
+        } else {
+            self.netType = NO;
+        }
+    }];
+}
+
 @end

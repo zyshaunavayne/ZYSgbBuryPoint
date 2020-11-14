@@ -15,6 +15,7 @@
 		2A701F47255BC80C00C23484 /* ZYBuryPointProcess.m in Sources */ = {isa = PBXBuildFile; fileRef = 2A701F46255BC80C00C23484 /* ZYBuryPointProcess.m */; platformFilter = ios; };
 		2A701F4C255BCAD400C23484 /* ZYBuryPointManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 2A701F4B255BCAD400C23484 /* ZYBuryPointManager.m */; platformFilter = ios; };
 		2A701F4F255BD40600C23484 /* libZYBuryPoint.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 2A701F4E255BD40600C23484 /* libZYBuryPoint.a */; platformFilter = ios; };
+		BD3F7755A3B16E3D4D05EEA0 /* libPods-ZYBuryPoint.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 611D1BE0447904B390BBF35A /* libPods-ZYBuryPoint.a */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -46,6 +47,9 @@
 		2A701F4A255BCAD400C23484 /* ZYBuryPointManager.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ZYBuryPointManager.h; sourceTree = "<group>"; };
 		2A701F4B255BCAD400C23484 /* ZYBuryPointManager.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ZYBuryPointManager.m; sourceTree = "<group>"; };
 		2A701F4E255BD40600C23484 /* libZYBuryPoint.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = libZYBuryPoint.a; sourceTree = "<group>"; };
+		4B74DA430F267A03B2D886CA /* Pods-ZYBuryPoint.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ZYBuryPoint.release.xcconfig"; path = "Target Support Files/Pods-ZYBuryPoint/Pods-ZYBuryPoint.release.xcconfig"; sourceTree = "<group>"; };
+		611D1BE0447904B390BBF35A /* libPods-ZYBuryPoint.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-ZYBuryPoint.a"; sourceTree = BUILT_PRODUCTS_DIR; };
+		B14E70F933E627BD56A4C86C /* Pods-ZYBuryPoint.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ZYBuryPoint.debug.xcconfig"; path = "Target Support Files/Pods-ZYBuryPoint/Pods-ZYBuryPoint.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -54,6 +58,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				2A701F4F255BD40600C23484 /* libZYBuryPoint.a in Frameworks */,
+				BD3F7755A3B16E3D4D05EEA0 /* libPods-ZYBuryPoint.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -65,6 +70,8 @@
 			children = (
 				2A701EEB255B90E800C23484 /* ZYBuryPoint */,
 				2A701EEA255B90E800C23484 /* Products */,
+				90F718C03CA251EAB1DB977F /* Pods */,
+				49AD063FB2EDD2F78712D199 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -97,6 +104,24 @@
 			path = ZYBuryPoint;
 			sourceTree = "<group>";
 		};
+		49AD063FB2EDD2F78712D199 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				611D1BE0447904B390BBF35A /* libPods-ZYBuryPoint.a */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		90F718C03CA251EAB1DB977F /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				B14E70F933E627BD56A4C86C /* Pods-ZYBuryPoint.debug.xcconfig */,
+				4B74DA430F267A03B2D886CA /* Pods-ZYBuryPoint.release.xcconfig */,
+			);
+			name = Pods;
+			path = Pods;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -104,6 +129,7 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 2A701EF2255B90E800C23484 /* Build configuration list for PBXNativeTarget "ZYBuryPoint" */;
 			buildPhases = (
+				F3900A4B7353F887D704D525 /* [CP] Check Pods Manifest.lock */,
 				2A701EE5255B90E800C23484 /* Sources */,
 				2A701EE6255B90E800C23484 /* Frameworks */,
 				2A701EE7255B90E800C23484 /* CopyFiles */,
@@ -147,6 +173,31 @@
 			);
 		};
 /* End PBXProject section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		F3900A4B7353F887D704D525 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-ZYBuryPoint-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
 		2A701EE5255B90E800C23484 /* Sources */ = {
@@ -279,6 +330,7 @@
 		};
 		2A701EF3255B90E800C23484 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = B14E70F933E627BD56A4C86C /* Pods-ZYBuryPoint.debug.xcconfig */;
 			buildSettings = {
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = L4DFRU2343;
@@ -295,6 +347,7 @@
 		};
 		2A701EF4255B90E800C23484 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 4B74DA430F267A03B2D886CA /* Pods-ZYBuryPoint.release.xcconfig */;
 			buildSettings = {
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = L4DFRU2343;
