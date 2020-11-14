@@ -10,7 +10,7 @@
 #import "ZYBuryPointProcess.h"
 
 //需要依赖AFNetworking
-#import <AFNetworking.h>
+#import <AFNetworking/AFNetworking.h>
 
 static NSString *firstTimeKey = @"ZYBuryPointRequest+FirstTime";
 static NSString *firstOpenKey = @"ZYBuryPointRequest+firstOpenKey";
