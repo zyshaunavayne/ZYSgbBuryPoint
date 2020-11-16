@@ -13,6 +13,7 @@
 #import "ZYBuryPointRequestBaseModel.h"
 //埋点信息
 #import "ZYBuryPointRequestModel.h"
+#import "ZYBuryPointProcess.h"
 
 NS_ASSUME_NONNULL_BEGIN
 

@@ -8,7 +8,6 @@
 
 #import "UIViewController+Runtime.h"
 #import <objc/runtime.h>
-#import "ZYBuryPointRequest.h"
 
 @implementation UIViewController (Runtime)
 

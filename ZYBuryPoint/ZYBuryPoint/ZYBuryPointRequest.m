@@ -7,7 +7,6 @@
 //
 
 #import "ZYBuryPointRequest.h"
-#import "ZYBuryPointProcess.h"
 
 //需要依赖AFNetworking
 #import <AFNetworking/AFNetworking.h>
