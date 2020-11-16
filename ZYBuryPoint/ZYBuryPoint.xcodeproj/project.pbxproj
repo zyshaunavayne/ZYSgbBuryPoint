@@ -13,7 +13,6 @@
 		2A24CD0825628E4600EE79FB /* ZYBuryPointRequestBaseModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 2A24CCFC25628E4500EE79FB /* ZYBuryPointRequestBaseModel.m */; };
 		2A24CD0925628E4600EE79FB /* UIViewController+Runtime.m in Sources */ = {isa = PBXBuildFile; fileRef = 2A24CCFE25628E4500EE79FB /* UIViewController+Runtime.m */; };
 		2A24CD0B25628E4600EE79FB /* ZYBuryPointRequestModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 2A24CD0325628E4600EE79FB /* ZYBuryPointRequestModel.m */; };
-		2A24CD522562982D00EE79FB /* libZYBuryPoint.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 2A24CD512562982D00EE79FB /* libZYBuryPoint.a */; };
 		BD3F7755A3B16E3D4D05EEA0 /* libPods-ZYBuryPoint.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 611D1BE0447904B390BBF35A /* libPods-ZYBuryPoint.a */; };
 /* End PBXBuildFile section */
 
@@ -43,7 +42,6 @@
 		2A24CD0225628E4600EE79FB /* ZYBuryPointRequestModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZYBuryPointRequestModel.h; sourceTree = "<group>"; };
 		2A24CD0325628E4600EE79FB /* ZYBuryPointRequestModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ZYBuryPointRequestModel.m; sourceTree = "<group>"; };
 		2A24CD0425628E4600EE79FB /* ZYBuryPointRequestBaseModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZYBuryPointRequestBaseModel.h; sourceTree = "<group>"; };
-		2A24CD512562982D00EE79FB /* libZYBuryPoint.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libZYBuryPoint.a; path = "../../../../Library/Developer/Xcode/DerivedData/ZYBuryPoint-elpoaujriwrgqmcgkinniopgsxoy/Build/Products/Debug-iphonesimulator/libZYBuryPoint.a"; sourceTree = "<group>"; };
 		2A701EE9255B90E800C23484 /* libZYBuryPoint.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libZYBuryPoint.a; sourceTree = BUILT_PRODUCTS_DIR; };
 		4B74DA430F267A03B2D886CA /* Pods-ZYBuryPoint.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ZYBuryPoint.release.xcconfig"; path = "Target Support Files/Pods-ZYBuryPoint/Pods-ZYBuryPoint.release.xcconfig"; sourceTree = "<group>"; };
 		611D1BE0447904B390BBF35A /* libPods-ZYBuryPoint.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-ZYBuryPoint.a"; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -56,7 +54,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				BD3F7755A3B16E3D4D05EEA0 /* libPods-ZYBuryPoint.a in Frameworks */,
-				2A24CD522562982D00EE79FB /* libZYBuryPoint.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -97,7 +94,6 @@
 				2A24CCFC25628E4500EE79FB /* ZYBuryPointRequestBaseModel.m */,
 				2A24CD0225628E4600EE79FB /* ZYBuryPointRequestModel.h */,
 				2A24CD0325628E4600EE79FB /* ZYBuryPointRequestModel.m */,
-				2A24CD512562982D00EE79FB /* libZYBuryPoint.a */,
 			);
 			path = ZYBuryPoint;
 			sourceTree = "<group>";
