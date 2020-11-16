@@ -7,7 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		2A4AF210255FA928003FA0C0 /* libZYBuryPoint.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 2A4AF20F255FA928003FA0C0 /* libZYBuryPoint.a */; };
+		2A24CCD42562887000EE79FB /* libZYBuryPoint.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 2A24CCD32562887000EE79FB /* libZYBuryPoint.a */; };
 		2A701EEF255B90E800C23484 /* ZYBuryPoint.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = 2A701EEC255B90E800C23484 /* ZYBuryPoint.h */; platformFilter = ios; };
 		2A701F37255BC52C00C23484 /* ZYBuryPointRequestBaseModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 2A701F2F255BC52C00C23484 /* ZYBuryPointRequestBaseModel.m */; platformFilter = ios; };
 		2A701F38255BC52C00C23484 /* ZYBuryPointRequestModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 2A701F30255BC52C00C23484 /* ZYBuryPointRequestModel.m */; platformFilter = ios; };
@@ -32,7 +32,7 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
-		2A4AF20F255FA928003FA0C0 /* libZYBuryPoint.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = libZYBuryPoint.a; sourceTree = "<group>"; };
+		2A24CCD32562887000EE79FB /* libZYBuryPoint.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = libZYBuryPoint.a; sourceTree = "<group>"; };
 		2A701EE9255B90E800C23484 /* libZYBuryPoint.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libZYBuryPoint.a; sourceTree = BUILT_PRODUCTS_DIR; };
 		2A701EEC255B90E800C23484 /* ZYBuryPoint.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ZYBuryPoint.h; sourceTree = "<group>"; };
 		2A701F2F255BC52C00C23484 /* ZYBuryPointRequestBaseModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ZYBuryPointRequestBaseModel.m; sourceTree = "<group>"; };
@@ -58,7 +58,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				BD3F7755A3B16E3D4D05EEA0 /* libPods-ZYBuryPoint.a in Frameworks */,
-				2A4AF210255FA928003FA0C0 /* libZYBuryPoint.a in Frameworks */,
+				2A24CCD42562887000EE79FB /* libZYBuryPoint.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -72,7 +72,10 @@
 				2A701F4A255BCAD400C23484 /* ZYBuryPointManager.h */,
 				2A701F33255BC52C00C23484 /* ZYBuryPointRequestBaseModel.h */,
 				2A701F35255BC52C00C23484 /* ZYBuryPointRequestModel.h */,
-				2A4AF20F255FA928003FA0C0 /* libZYBuryPoint.a */,
+				2A701F31255BC52C00C23484 /* UIViewController+Runtime.h */,
+				2A701F45255BC80C00C23484 /* ZYBuryPointProcess.h */,
+				2A701F32255BC52C00C23484 /* ZYBuryPointRequest.h */,
+				2A24CCD32562887000EE79FB /* libZYBuryPoint.a */,
 			);
 			path = Header;
 			sourceTree = "<group>";
@@ -100,11 +103,8 @@
 			children = (
 				2A4AF20D255FA8EB003FA0C0 /* Header */,
 				2A701F4B255BCAD400C23484 /* ZYBuryPointManager.m */,
-				2A701F45255BC80C00C23484 /* ZYBuryPointProcess.h */,
 				2A701F46255BC80C00C23484 /* ZYBuryPointProcess.m */,
-				2A701F31255BC52C00C23484 /* UIViewController+Runtime.h */,
 				2A701F34255BC52C00C23484 /* UIViewController+Runtime.m */,
-				2A701F32255BC52C00C23484 /* ZYBuryPointRequest.h */,
 				2A701F36255BC52C00C23484 /* ZYBuryPointRequest.m */,
 				2A701F2F255BC52C00C23484 /* ZYBuryPointRequestBaseModel.m */,
 				2A701F30255BC52C00C23484 /* ZYBuryPointRequestModel.m */,
