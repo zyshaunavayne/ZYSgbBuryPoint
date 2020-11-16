@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		2A4AF210255FA928003FA0C0 /* libZYBuryPoint.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 2A4AF20F255FA928003FA0C0 /* libZYBuryPoint.a */; };
 		2A701EEF255B90E800C23484 /* ZYBuryPoint.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = 2A701EEC255B90E800C23484 /* ZYBuryPoint.h */; platformFilter = ios; };
 		2A701F37255BC52C00C23484 /* ZYBuryPointRequestBaseModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 2A701F2F255BC52C00C23484 /* ZYBuryPointRequestBaseModel.m */; platformFilter = ios; };
 		2A701F38255BC52C00C23484 /* ZYBuryPointRequestModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 2A701F30255BC52C00C23484 /* ZYBuryPointRequestModel.m */; platformFilter = ios; };
@@ -14,7 +15,6 @@
 		2A701F3A255BC52C00C23484 /* ZYBuryPointRequest.m in Sources */ = {isa = PBXBuildFile; fileRef = 2A701F36255BC52C00C23484 /* ZYBuryPointRequest.m */; platformFilter = ios; };
 		2A701F47255BC80C00C23484 /* ZYBuryPointProcess.m in Sources */ = {isa = PBXBuildFile; fileRef = 2A701F46255BC80C00C23484 /* ZYBuryPointProcess.m */; platformFilter = ios; };
 		2A701F4C255BCAD400C23484 /* ZYBuryPointManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 2A701F4B255BCAD400C23484 /* ZYBuryPointManager.m */; platformFilter = ios; };
-		2A701F4F255BD40600C23484 /* libZYBuryPoint.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 2A701F4E255BD40600C23484 /* libZYBuryPoint.a */; platformFilter = ios; };
 		BD3F7755A3B16E3D4D05EEA0 /* libPods-ZYBuryPoint.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 611D1BE0447904B390BBF35A /* libPods-ZYBuryPoint.a */; };
 /* End PBXBuildFile section */
 
@@ -32,6 +32,7 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		2A4AF20F255FA928003FA0C0 /* libZYBuryPoint.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = libZYBuryPoint.a; sourceTree = "<group>"; };
 		2A701EE9255B90E800C23484 /* libZYBuryPoint.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libZYBuryPoint.a; sourceTree = BUILT_PRODUCTS_DIR; };
 		2A701EEC255B90E800C23484 /* ZYBuryPoint.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ZYBuryPoint.h; sourceTree = "<group>"; };
 		2A701F2F255BC52C00C23484 /* ZYBuryPointRequestBaseModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ZYBuryPointRequestBaseModel.m; sourceTree = "<group>"; };
@@ -46,7 +47,6 @@
 		2A701F46255BC80C00C23484 /* ZYBuryPointProcess.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ZYBuryPointProcess.m; sourceTree = "<group>"; };
 		2A701F4A255BCAD400C23484 /* ZYBuryPointManager.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ZYBuryPointManager.h; sourceTree = "<group>"; };
 		2A701F4B255BCAD400C23484 /* ZYBuryPointManager.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ZYBuryPointManager.m; sourceTree = "<group>"; };
-		2A701F4E255BD40600C23484 /* libZYBuryPoint.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = libZYBuryPoint.a; sourceTree = "<group>"; };
 		4B74DA430F267A03B2D886CA /* Pods-ZYBuryPoint.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ZYBuryPoint.release.xcconfig"; path = "Target Support Files/Pods-ZYBuryPoint/Pods-ZYBuryPoint.release.xcconfig"; sourceTree = "<group>"; };
 		611D1BE0447904B390BBF35A /* libPods-ZYBuryPoint.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-ZYBuryPoint.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		B14E70F933E627BD56A4C86C /* Pods-ZYBuryPoint.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ZYBuryPoint.debug.xcconfig"; path = "Target Support Files/Pods-ZYBuryPoint/Pods-ZYBuryPoint.debug.xcconfig"; sourceTree = "<group>"; };
@@ -57,14 +57,26 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				2A701F4F255BD40600C23484 /* libZYBuryPoint.a in Frameworks */,
 				BD3F7755A3B16E3D4D05EEA0 /* libPods-ZYBuryPoint.a in Frameworks */,
+				2A4AF210255FA928003FA0C0 /* libZYBuryPoint.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		2A4AF20D255FA8EB003FA0C0 /* Header */ = {
+			isa = PBXGroup;
+			children = (
+				2A701EEC255B90E800C23484 /* ZYBuryPoint.h */,
+				2A701F4A255BCAD400C23484 /* ZYBuryPointManager.h */,
+				2A701F33255BC52C00C23484 /* ZYBuryPointRequestBaseModel.h */,
+				2A701F35255BC52C00C23484 /* ZYBuryPointRequestModel.h */,
+				2A4AF20F255FA928003FA0C0 /* libZYBuryPoint.a */,
+			);
+			path = Header;
+			sourceTree = "<group>";
+		};
 		2A701EE0255B90E800C23484 = {
 			isa = PBXGroup;
 			children = (
@@ -86,8 +98,7 @@
 		2A701EEB255B90E800C23484 /* ZYBuryPoint */ = {
 			isa = PBXGroup;
 			children = (
-				2A701EEC255B90E800C23484 /* ZYBuryPoint.h */,
-				2A701F4A255BCAD400C23484 /* ZYBuryPointManager.h */,
+				2A4AF20D255FA8EB003FA0C0 /* Header */,
 				2A701F4B255BCAD400C23484 /* ZYBuryPointManager.m */,
 				2A701F45255BC80C00C23484 /* ZYBuryPointProcess.h */,
 				2A701F46255BC80C00C23484 /* ZYBuryPointProcess.m */,
@@ -95,11 +106,8 @@
 				2A701F34255BC52C00C23484 /* UIViewController+Runtime.m */,
 				2A701F32255BC52C00C23484 /* ZYBuryPointRequest.h */,
 				2A701F36255BC52C00C23484 /* ZYBuryPointRequest.m */,
-				2A701F33255BC52C00C23484 /* ZYBuryPointRequestBaseModel.h */,
 				2A701F2F255BC52C00C23484 /* ZYBuryPointRequestBaseModel.m */,
-				2A701F35255BC52C00C23484 /* ZYBuryPointRequestModel.h */,
 				2A701F30255BC52C00C23484 /* ZYBuryPointRequestModel.m */,
-				2A701F4E255BD40600C23484 /* libZYBuryPoint.a */,
 			);
 			path = ZYBuryPoint;
 			sourceTree = "<group>";
@@ -118,7 +126,6 @@
 				B14E70F933E627BD56A4C86C /* Pods-ZYBuryPoint.debug.xcconfig */,
 				4B74DA430F267A03B2D886CA /* Pods-ZYBuryPoint.release.xcconfig */,
 			);
-			name = Pods;
 			path = Pods;
 			sourceTree = "<group>";
 		};
@@ -337,6 +344,7 @@
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)/ZYBuryPoint",
+					"$(PROJECT_DIR)/ZYBuryPoint/Header",
 				);
 				OTHER_LDFLAGS = "-ObjC";
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -354,6 +362,7 @@
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)/ZYBuryPoint",
+					"$(PROJECT_DIR)/ZYBuryPoint/Header",
 				);
 				OTHER_LDFLAGS = "-ObjC";
 				PRODUCT_NAME = "$(TARGET_NAME)";
