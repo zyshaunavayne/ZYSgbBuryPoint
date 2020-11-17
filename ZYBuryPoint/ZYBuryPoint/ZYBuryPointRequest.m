@@ -45,7 +45,7 @@ static NSString *firstOpenKey = @"ZYBuryPointRequest+firstOpenKey";
     //基础信息埋点
     NSMutableDictionary *proDic = NSMutableDictionary.alloc.init;
     [proDic setDictionary:self.requestBaseModel.toDictionary];
-    [self requestUrl:[NSString stringWithFormat:@"%@%@",ZYBuryPointManager.manager.serverAdress,ZYBuryPointManager.manager.baseUrl] proDic:proDic success:^(id _Nonnull success) {}];
+    [self requestUrl:[NSString stringWithFormat:@"%@%@",ZYBuryPointManager.manager.request.serverAdress,ZYBuryPointManager.manager.request.baseUrl] proDic:proDic success:^(id _Nonnull success) {}];
     
     //开启app进去时埋点
     [self enterAppBuryPointAction];
@@ -57,8 +57,8 @@ static NSString *firstOpenKey = @"ZYBuryPointRequest+firstOpenKey";
         _requestModel = ZYBuryPointRequestModel.alloc.init;
         _requestModel.messagePush = @"1";
         _requestModel.visitId = [NSString stringWithFormat:@"iOS %@",[ZYBuryPointProcess archiveDataWithKey:firstOpenKey]];
-        _requestModel.userName = [ZYBuryPointProcess check:ZYBuryPointManager.manager.username];
     }
+    _requestModel.userName = [ZYBuryPointProcess check:ZYBuryPointManager.manager.username];
     return _requestModel;
 }
 
@@ -109,7 +109,7 @@ static NSString *firstOpenKey = @"ZYBuryPointRequest+firstOpenKey";
 {
     NSMutableDictionary *proDic = NSMutableDictionary.alloc.init;
     [proDic setDictionary:self.requestModel.toDictionary];
-    [self requestUrl:[NSString stringWithFormat:@"%@%@",ZYBuryPointManager.manager.serverAdress,ZYBuryPointManager.manager.buryPointUrl] proDic:proDic success:^(id _Nonnull success) {}];
+    [self requestUrl:[NSString stringWithFormat:@"%@%@",ZYBuryPointManager.manager.request.serverAdress,ZYBuryPointManager.manager.request.buryPointUrl] proDic:proDic success:^(id _Nonnull success) {}];
 }
 
 #pragma mark -- 以下可忽略
