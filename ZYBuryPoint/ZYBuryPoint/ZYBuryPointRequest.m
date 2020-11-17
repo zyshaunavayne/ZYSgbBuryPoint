@@ -57,7 +57,7 @@ static NSString *firstOpenKey = @"ZYBuryPointRequest+firstOpenKey";
         _requestModel = ZYBuryPointRequestModel.alloc.init;
         _requestModel.messagePush = @"1";
         _requestModel.visitId = [NSString stringWithFormat:@"iOS %@",[ZYBuryPointProcess archiveDataWithKey:firstOpenKey]];
-        _requestModel.userName = @"";
+        _requestModel.userName = [ZYBuryPointProcess check:ZYBuryPointManager.manager.username];
     }
     return _requestModel;
 }
@@ -73,27 +73,35 @@ static NSString *firstOpenKey = @"ZYBuryPointRequest+firstOpenKey";
 
 - (void)beginBuryPointAction:(UIViewController *)superVC
 {
+    NSString *classStr = [NSString stringWithFormat:@"%@%@",NSStringFromClass(superVC.class),[ZYBuryPointProcess check:superVC.title]];
     self.requestModel.timeStampPageStart = ZYBuryPointProcess.timeStap;
-    self.requestModel.pageView = superVC.title.length == 0 ? @"" : superVC.title;
+    [ZYBuryPointProcess saveData:ZYBuryPointProcess.timeStap key:classStr];
+    self.requestModel.pageView = [ZYBuryPointProcess check:superVC.title];
     [self requestAction];
 }
 
 - (void)endBuryPointAction:(UIViewController *)superVC
 {
+    NSString *classStr = [NSString stringWithFormat:@"%@%@",NSStringFromClass(superVC.class),[ZYBuryPointProcess check:superVC.title]];
+    self.requestModel.timeStampPageStart = [ZYBuryPointProcess check:[ZYBuryPointProcess archiveDataWithKey:classStr]];
+    [ZYBuryPointProcess removeDataWithKey:classStr];
     self.requestModel.timeStampPageEnd = ZYBuryPointProcess.timeStap;
-    self.requestModel.pageView = superVC.title.length == 0 ? @"" : superVC.title;
+    self.requestModel.pageView = [ZYBuryPointProcess check:superVC.title];
     [self requestAction];
 }
 
 - (void)enterAppBuryPointAction
 {
+    [ZYBuryPointProcess saveData:ZYBuryPointProcess.timeStap key:@"enterAppBuryPointAction"];
     self.requestModel.timeStampStart = ZYBuryPointProcess.timeStap;
     [self requestAction];
 }
 
 - (void)leveaAppBuryPointAction
 {
+    self.requestModel.timeStampStart = [ZYBuryPointProcess check:[ZYBuryPointProcess archiveDataWithKey:@"enterAppBuryPointAction"]];
     self.requestModel.timeStampEnd = ZYBuryPointProcess.timeStap;
+    [ZYBuryPointProcess removeDataWithKey:@"enterAppBuryPointAction"];
     [self requestAction];
 }
 

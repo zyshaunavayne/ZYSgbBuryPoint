@@ -34,4 +34,13 @@
     return [NSString stringWithFormat:@"%ld000", (long)[nowDate timeIntervalSince1970]];
 }
 
++ (NSString *)check:(id)obj
+{
+    if ([obj length] == 0 || obj == nil || obj == [NSNull null] || obj == NULL || [obj isKindOfClass:[NSNull class]]) {
+        return @"";
+    }else{
+        return obj;
+    }
+}
+
 @end

@@ -27,6 +27,10 @@ NS_ASSUME_NONNULL_BEGIN
 /// 13位当前时间戳
 + (NSString *)timeStap;
 
+/// 检测为空
+/// @param obj 内容
++ (NSString *)check:(id)obj;
+
 @end
 
 NS_ASSUME_NONNULL_END
