@@ -19,26 +19,26 @@
 
 - (void)observeValueForKeyPath:(NSString *)keyPath ofObject:(id)object change:(NSDictionary<NSKeyValueChangeKey,id> *)change context:(void *)context
 {
-    if (object) {
-        NSDictionary *dic = [self toDic:object];
-        ZYBuryPointManager.manager.username = [dic objectForKey:[ZYBuryPointProcess check:keyPath]];
+    if (object && keyPath) {
+        ZYBuryPointManager.manager.username = [self archive:object key:keyPath];
     }
 }
 
-- (NSDictionary *)toDic:(id)object
+- (NSString *)archive:(id)object key:(NSString *)key
 {
-    NSMutableDictionary *props = [NSMutableDictionary dictionary];
-    unsigned int outCount, i;
-    objc_property_t *properties = class_copyPropertyList([object class], &outCount);
-    for (i = 0; i < outCount; i ++) {
+    unsigned int count;
+    objc_property_t *properties = class_copyPropertyList([object class], &count);
+    NSString *vlaue = @"";
+    for (int i = 0; i < count; i++) {
         objc_property_t property = properties[i];
-        const char* char_f = property_getName(property);
-        NSString *propertyName = [NSString stringWithUTF8String:char_f];
-        id propertyValue = [self valueForKey:(NSString *)propertyName];
-        if (propertyValue) [props setObject:propertyValue forKey:propertyName];
+        const char *cName = property_getName(property);
+        NSString *name = [NSString stringWithCString:cName encoding:NSUTF8StringEncoding];
+        if ([name isEqualToString:key]) {
+            vlaue = [ZYBuryPointProcess check:[object valueForKey:key]];
+            break;
+        }
     }
-    free(properties);
-    return props;
+    return vlaue;
 }
 
 @end

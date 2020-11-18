@@ -25,6 +25,8 @@ NSString *const kZYBuryPointRequestModelType = @"type";
 NSString *const kZYBuryPointRequestModelUserName = @"userName";
 NSString *const kZYBuryPointRequestModelVisitId = @"visitId";
 NSString *const kZYBuryPointRequestModeIsUse = @"isUse";
+NSString *const kZYBuryPointRequestModelOperatingSystem = @"operatingSystem";
+NSString *const kZYBuryPointRequestModelPhoneCode= @"phoneCode";
 
 @interface ZYBuryPointRequestModel ()
 @end
@@ -79,6 +81,13 @@ NSString *const kZYBuryPointRequestModeIsUse = @"isUse";
     if(![dictionary[kZYBuryPointRequestModeIsUse] isKindOfClass:[NSNull class]]){
         self.isUse = dictionary[kZYBuryPointRequestModeIsUse];
     }
+    if(![dictionary[kZYBuryPointRequestModelOperatingSystem] isKindOfClass:[NSNull class]]){
+        self.operatingSystem = dictionary[kZYBuryPointRequestModelOperatingSystem];
+    }
+    if(![dictionary[kZYBuryPointRequestModelPhoneCode] isKindOfClass:[NSNull class]]){
+        self.phoneCode = dictionary[kZYBuryPointRequestModelPhoneCode];
+    }
+
     return self;
 }
 
@@ -127,6 +136,12 @@ NSString *const kZYBuryPointRequestModeIsUse = @"isUse";
     }
     if(self.isUse != nil){
         dictionary[kZYBuryPointRequestModeIsUse] = self.isUse;
+    }
+    if(self.operatingSystem != nil){
+        dictionary[kZYBuryPointRequestModelOperatingSystem] = self.operatingSystem;
+    }
+    if(self.phoneCode != nil){
+        dictionary[kZYBuryPointRequestModelPhoneCode] = self.phoneCode;
     }
     return dictionary;
 
@@ -179,6 +194,12 @@ NSString *const kZYBuryPointRequestModeIsUse = @"isUse";
     if(self.isUse != nil){
         [aCoder encodeObject:self.isUse forKey:kZYBuryPointRequestModeIsUse];
     }
+    if(self.operatingSystem != nil){
+        [aCoder encodeObject:self.operatingSystem forKey:kZYBuryPointRequestModelOperatingSystem];
+    }
+    if(self.phoneCode != nil){
+        [aCoder encodeObject:self.phoneCode forKey:kZYBuryPointRequestModelPhoneCode];
+    }
 }
 
 /**
@@ -200,6 +221,8 @@ NSString *const kZYBuryPointRequestModeIsUse = @"isUse";
     self.userName = [aDecoder decodeObjectForKey:kZYBuryPointRequestModelUserName];
     self.visitId = [aDecoder decodeObjectForKey:kZYBuryPointRequestModelVisitId];
     self.isUse = [aDecoder decodeObjectForKey:kZYBuryPointRequestModeIsUse];
+    self.operatingSystem = [aDecoder decodeObjectForKey:kZYBuryPointRequestModelOperatingSystem];
+    self.phoneCode = [aDecoder decodeObjectForKey:kZYBuryPointRequestModelPhoneCode];
     return self;
 
 }
@@ -224,6 +247,8 @@ NSString *const kZYBuryPointRequestModeIsUse = @"isUse";
     copy.userName = [self.userName copy];
     copy.visitId = [self.visitId copy];
     copy.isUse = [self.isUse copy];
+    copy.operatingSystem = [self.operatingSystem copy];
+    copy.phoneCode = [self.phoneCode copy];
 
     return copy;
 }

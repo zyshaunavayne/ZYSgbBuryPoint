@@ -18,7 +18,7 @@ NSString *const kZYBuryPointRequestBaseModelClient = @"client";
 NSString *const kZYBuryPointRequestBaseModelEdition = @"edition";
 NSString *const kZYBuryPointRequestBaseModelInstallationChannel = @"installationChannel";
 NSString *const kZYBuryPointRequestBaseModelOperatingSystem = @"operatingSystem";
-NSString *const kZYBuryPointRequestBaseModelPhoneCoode = @"phoneCoode";
+NSString *const kZYBuryPointRequestBaseModelPhoneCode = @"phoneCode";
 NSString *const kZYBuryPointRequestBaseModelTimeStamp = @"timeStamp";
 
 @interface ZYBuryPointRequestBaseModel ()
@@ -47,8 +47,8 @@ NSString *const kZYBuryPointRequestBaseModelTimeStamp = @"timeStamp";
     if(![dictionary[kZYBuryPointRequestBaseModelOperatingSystem] isKindOfClass:[NSNull class]]){
         self.operatingSystem = dictionary[kZYBuryPointRequestBaseModelOperatingSystem];
     }
-    if(![dictionary[kZYBuryPointRequestBaseModelPhoneCoode] isKindOfClass:[NSNull class]]){
-        self.phoneCoode = dictionary[kZYBuryPointRequestBaseModelPhoneCoode];
+    if(![dictionary[kZYBuryPointRequestBaseModelPhoneCode] isKindOfClass:[NSNull class]]){
+        self.phoneCode = dictionary[kZYBuryPointRequestBaseModelPhoneCode];
     }
     if(![dictionary[kZYBuryPointRequestBaseModelTimeStamp] isKindOfClass:[NSNull class]]){
         self.timeStamp = dictionary[kZYBuryPointRequestBaseModelTimeStamp];
@@ -75,8 +75,8 @@ NSString *const kZYBuryPointRequestBaseModelTimeStamp = @"timeStamp";
     if(self.operatingSystem != nil){
         dictionary[kZYBuryPointRequestBaseModelOperatingSystem] = self.operatingSystem;
     }
-    if(self.phoneCoode != nil){
-        dictionary[kZYBuryPointRequestBaseModelPhoneCoode] = self.phoneCoode;
+    if(self.phoneCode != nil){
+        dictionary[kZYBuryPointRequestBaseModelPhoneCode] = self.phoneCode;
     }
     if(self.timeStamp != nil){
         dictionary[kZYBuryPointRequestBaseModelTimeStamp] = self.timeStamp;
@@ -105,8 +105,8 @@ NSString *const kZYBuryPointRequestBaseModelTimeStamp = @"timeStamp";
     if(self.operatingSystem != nil){
         [aCoder encodeObject:self.operatingSystem forKey:kZYBuryPointRequestBaseModelOperatingSystem];
     }
-    if(self.phoneCoode != nil){
-        [aCoder encodeObject:self.phoneCoode forKey:kZYBuryPointRequestBaseModelPhoneCoode];
+    if(self.phoneCode != nil){
+        [aCoder encodeObject:self.phoneCode forKey:kZYBuryPointRequestBaseModelPhoneCode];
     }
     if(self.timeStamp != nil){
         [aCoder encodeObject:self.timeStamp forKey:kZYBuryPointRequestBaseModelTimeStamp];
@@ -124,7 +124,7 @@ NSString *const kZYBuryPointRequestBaseModelTimeStamp = @"timeStamp";
     self.edition = [aDecoder decodeObjectForKey:kZYBuryPointRequestBaseModelEdition];
     self.installationChannel = [aDecoder decodeObjectForKey:kZYBuryPointRequestBaseModelInstallationChannel];
     self.operatingSystem = [aDecoder decodeObjectForKey:kZYBuryPointRequestBaseModelOperatingSystem];
-    self.phoneCoode = [aDecoder decodeObjectForKey:kZYBuryPointRequestBaseModelPhoneCoode];
+    self.phoneCode = [aDecoder decodeObjectForKey:kZYBuryPointRequestBaseModelPhoneCode];
     self.timeStamp = [aDecoder decodeObjectForKey:kZYBuryPointRequestBaseModelTimeStamp];
     return self;
 
@@ -141,7 +141,7 @@ NSString *const kZYBuryPointRequestBaseModelTimeStamp = @"timeStamp";
     copy.edition = [self.edition copy];
     copy.installationChannel = [self.installationChannel copy];
     copy.operatingSystem = [self.operatingSystem copy];
-    copy.phoneCoode = [self.phoneCoode copy];
+    copy.phoneCode = [self.phoneCode copy];
     copy.timeStamp = [self.timeStamp copy];
 
     return copy;

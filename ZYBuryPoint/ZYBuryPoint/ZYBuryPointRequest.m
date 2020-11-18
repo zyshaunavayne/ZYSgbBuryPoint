@@ -30,8 +30,8 @@ static NSString *firstOpenKey = @"ZYBuryPointRequest+firstOpenKey";
         [self archiveFirstTime];
         [self getNetTypeStatus];
         _requestBaseModel = ZYBuryPointRequestBaseModel.alloc.init;
-        _requestBaseModel.operatingSystem = @"iOS";
-        _requestBaseModel.phoneCoode = NSUUID.UUID.UUIDString;;
+        _requestBaseModel.operatingSystem = [NSString stringWithFormat:@"iOS_%@",[[UIDevice currentDevice] systemVersion]];
+        _requestBaseModel.phoneCode = NSUUID.UUID.UUIDString;
         _requestBaseModel.timeStamp = [ZYBuryPointProcess archiveDataWithKey:firstTimeKey];
         _requestBaseModel.client = [_requestBaseModel device];
         _requestBaseModel.edition = [[[NSBundle mainBundle] infoDictionary] objectForKey:@"CFBundleShortVersionString"];
@@ -56,7 +56,9 @@ static NSString *firstOpenKey = @"ZYBuryPointRequest+firstOpenKey";
     if (!_requestModel) {
         _requestModel = ZYBuryPointRequestModel.alloc.init;
         _requestModel.messagePush = @"1";
-        _requestModel.visitId = [NSString stringWithFormat:@"iOS %@",[ZYBuryPointProcess archiveDataWithKey:firstOpenKey]];
+        _requestModel.operatingSystem = [NSString stringWithFormat:@"iOS_%@",[[UIDevice currentDevice] systemVersion]];
+        _requestModel.phoneCode = NSUUID.UUID.UUIDString;
+        _requestModel.visitId = [ZYBuryPointProcess archiveDataWithKey:firstOpenKey];
     }
     _requestModel.userName = [ZYBuryPointProcess check:ZYBuryPointManager.manager.username];
     return _requestModel;

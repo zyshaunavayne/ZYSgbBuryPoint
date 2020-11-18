@@ -9,7 +9,8 @@
 #import <UIKit/UIKit.h>
 
 @interface ZYBuryPointRequestModel : NSObject
-
+@property (nonatomic, strong) NSString * phoneCode; //UDID
+@property (nonatomic, strong) NSString * operatingSystem; //操作系统
 @property (nonatomic, strong) NSString * city; //城市
 @property (nonatomic, strong) NSString * messagePush; //消息推送唤醒app  0 是消息推送唤醒 1不是")(不确定是否能获取到，目前没有实现
 @property (nonatomic, strong) NSString * pageView; //访问页面 采用事件埋点的方式（麻烦各位看看移动端能不能像web一样搞个拦截器或者监听器，要不工作量会很大
