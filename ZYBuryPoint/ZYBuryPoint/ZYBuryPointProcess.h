@@ -6,6 +6,7 @@
 //
 
 #import <Foundation/Foundation.h>
+#import <UIKit/UIKit.h>
 
 NS_ASSUME_NONNULL_BEGIN
 
@@ -30,6 +31,9 @@ NS_ASSUME_NONNULL_BEGIN
 /// 检测为空
 /// @param obj 内容
 + (NSString *)check:(id)obj;
+
+/// 获取当前页面
++ (UIViewController *)getCurrentVC;
 
 @end
 

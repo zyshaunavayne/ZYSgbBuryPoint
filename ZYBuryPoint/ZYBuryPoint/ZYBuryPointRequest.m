@@ -106,6 +106,15 @@ static NSString *firstOpenKey = @"ZYBuryPointRequest+firstOpenKey";
     [self requestAction];
 }
 
+- (void)searchBuryPointAction:(UIViewController *)superVC searchKey:(NSString *)searchKey
+{
+    NSString *classStr = [NSString stringWithFormat:@"%@%@",NSStringFromClass(superVC.class),[ZYBuryPointProcess check:superVC.title]];
+    self.requestModel.timeStampPageStart = [ZYBuryPointProcess check:[ZYBuryPointProcess archiveDataWithKey:classStr]];
+    self.requestModel.pageView = [ZYBuryPointProcess check:superVC.title];
+    self.requestModel.searchTerms = [ZYBuryPointProcess check:searchKey];
+    [self requestAction];
+}
+
 - (void)requestAction
 {
     NSMutableDictionary *proDic = NSMutableDictionary.alloc.init;

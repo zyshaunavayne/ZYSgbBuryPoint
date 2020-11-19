@@ -45,6 +45,11 @@ NS_ASSUME_NONNULL_BEGIN
 /// 离开app埋点
 - (void)leveaAppBuryPointAction;
 
+/// 搜索埋点 在#import "UITextField+Runtime.h"中交换return方法触发
+/// @param superVC 当前页面
+/// @param searchKey 搜索关键词
+- (void)searchBuryPointAction:(UIViewController *)superVC searchKey:(NSString *)searchKey;
+
 @end
 
 NS_ASSUME_NONNULL_END
