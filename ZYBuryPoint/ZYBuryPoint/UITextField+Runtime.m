@@ -6,26 +6,27 @@
 //
 
 #import "UITextField+Runtime.h"
+#import <objc/runtime.h>
 
 @implementation UITextField (Runtime)
 
 + (void)share
 {
-//    static dispatch_once_t onceGcd;
-//    dispatch_once(&onceGcd, ^{
-//        
-//        //替换viewWillAppear
-//        SEL systemSel1 = @selector(viewWillAppear:);
-//        SEL newSel1 = @selector(searchAction);
-//        Method systemMethod1 = class_getInstanceMethod([self class], systemSel1);
-//        Method newMethod1 = class_getInstanceMethod([self class], newSel1);
-//        BOOL success1 = class_addMethod(self, systemSel1, method_getImplementation(newMethod1), method_getTypeEncoding(newMethod1));
-//        if (success1) {
-//            class_replaceMethod(self, newSel1, method_getImplementation(systemMethod1), method_getTypeEncoding(systemMethod1));
-//        }else{
-//            method_exchangeImplementations(systemMethod1, newMethod1);
-//        }
-//    });
+    static dispatch_once_t onceGcd;
+    dispatch_once(&onceGcd, ^{
+        
+        SEL systemSel = @selector(textFieldShouldReturn:);
+        SEL newSel = @selector(newTextFieldShouldReturn:);
+        Method systemMth = class_getInstanceMethod([self class], systemSel);
+        Method newMth = class_getInstanceMethod([self class], newSel);
+        BOOL success = class_addMethod(self, systemSel, method_getImplementation(newMth), method_getTypeEncoding(newMth));
+        if (success) {
+            class_replaceMethod(self, newSel, method_getImplementation(systemMth), method_getTypeEncoding(systemMth));
+        }else{
+            method_exchangeImplementations(systemMth, newMth);
+        }
+        
+    });
 }
 
 - (BOOL)newTextFieldShouldReturn:(UITextField *)textField
