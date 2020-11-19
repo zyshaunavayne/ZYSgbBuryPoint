@@ -28,7 +28,6 @@ static NSString *firstOpenKey = @"ZYBuryPointRequest+firstOpenKey";
 {
     if (!_requestBaseModel) {
         [self archiveFirstTime];
-        [self getNetTypeStatus];
         _requestBaseModel = ZYBuryPointRequestBaseModel.alloc.init;
         _requestBaseModel.operatingSystem = [NSString stringWithFormat:@"iOS_%@",[[UIDevice currentDevice] systemVersion]];
         _requestBaseModel.phoneCode = NSUUID.UUID.UUIDString;
@@ -121,12 +120,6 @@ static NSString *firstOpenKey = @"ZYBuryPointRequest+firstOpenKey";
             proDic:(NSMutableDictionary *)proDic
            success:(void (^)(id _Nonnull))result
 {
-
-    if (!_netType) {
-        [self getNetTypeStatus];
-        return;
-    }
-    
     dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^{
         
         AFHTTPSessionManager *manager = [AFHTTPSessionManager manager];
@@ -203,20 +196,7 @@ static NSString *firstOpenKey = @"ZYBuryPointRequest+firstOpenKey";
             dictionary = nil;
         }
     }
-    NSLog(@"dictionary == %@",dictionary);
     return dictionary;
-}
-
-- (void)getNetTypeStatus
-{
-    [[AFNetworkReachabilityManager sharedManager] startMonitoring];
-    [[AFNetworkReachabilityManager sharedManager ] setReachabilityStatusChangeBlock:^(AFNetworkReachabilityStatus status) {
-        if(status ==AFNetworkReachabilityStatusReachableViaWWAN || status == AFNetworkReachabilityStatusReachableViaWiFi) {
-            self.netType = YES;
-        } else {
-            self.netType = NO;
-        }
-    }];
 }
 
 @end

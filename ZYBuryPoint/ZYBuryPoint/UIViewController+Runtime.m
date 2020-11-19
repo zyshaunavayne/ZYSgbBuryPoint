@@ -76,9 +76,10 @@
      
     */
     
-    if ([self isKindOfClass:[NSClassFromString(@"UICompatibilityInputViewController") class]] || [self isKindOfClass:[NSClassFromString(@"UIPredictionViewController") class]] || [self isKindOfClass:[NSClassFromString(@"UISystemInputAssistantViewController") class]] || [self isKindOfClass:[NSClassFromString(@"UIInputWindowController") class]] || [self isKindOfClass:[NSClassFromString(@"UIEditingOverlayViewController") class]] || [NSClassFromString(@"UIAlertController") class] || [self isKindOfClass:[NSClassFromString(@"RootHomeViewController") class]] || [self isKindOfClass:[NSClassFromString(@"BaseNavClassViewController") class]]) {
+    if ([self isKindOfClass:NSClassFromString(@"UICompatibilityInputViewController")] || [self isKindOfClass:NSClassFromString(@"UIPredictionViewController")] || [self isKindOfClass:NSClassFromString(@"UISystemInputAssistantViewController")] || [self isKindOfClass:NSClassFromString(@"UIInputWindowController")] || [self isKindOfClass:NSClassFromString(@"UIEditingOverlayViewController")] || [self isKindOfClass:NSClassFromString(@"UIAlertController")] || [self isKindOfClass:NSClassFromString(@"RootHomeViewController")] || [self isKindOfClass:NSClassFromString(@"BaseNavClassViewController")]) {
         return NO;
     }
+    
     return YES;
 }
 
