@@ -15,26 +15,31 @@
     static dispatch_once_t onceGcd;
     dispatch_once(&onceGcd, ^{
         
-        SEL systemSel = @selector(textFieldShouldReturn:);
-        SEL newSel = @selector(newTextFieldShouldReturn:);
-        Method systemMth = class_getInstanceMethod([self class], systemSel);
-        Method newMth = class_getInstanceMethod([self class], newSel);
-        BOOL success = class_addMethod(self, systemSel, method_getImplementation(newMth), method_getTypeEncoding(newMth));
-        if (success) {
-            class_replaceMethod(self, newSel, method_getImplementation(systemMth), method_getTypeEncoding(systemMth));
+        SEL systemDelegateSel = @selector(setReturnKeyType:);
+        SEL newDelegateSel = @selector(newSetReturnKeyType:);
+        Method systemDelegateMTH = class_getInstanceMethod([self class], systemDelegateSel);
+        Method newSystemDelegateMTH = class_getInstanceMethod([self class], newDelegateSel);
+        BOOL delegateSuccess = class_addMethod(self, systemDelegateSel, method_getImplementation(newSystemDelegateMTH), method_getTypeEncoding(newSystemDelegateMTH));
+        if (delegateSuccess) {
+            class_replaceMethod(self, newDelegateSel, method_getImplementation(systemDelegateMTH), method_getTypeEncoding(systemDelegateMTH));
         }else{
-            method_exchangeImplementations(systemMth, newMth);
+            method_exchangeImplementations(systemDelegateMTH, newSystemDelegateMTH);
         }
-        
     });
 }
 
-- (BOOL)newTextFieldShouldReturn:(UITextField *)textField
+- (void)newSetReturnKeyType:(UIReturnKeyType)returnKeyType
 {
-    if (textField.text.length != 0 && textField.returnKeyType == UIReturnKeySearch) {
-        [ZYBuryPointRequest.shareBPR searchBuryPointAction:[ZYBuryPointProcess getCurrentVC] searchKey:textField.text];
+    if (returnKeyType == UIReturnKeySearch) {
+        [self addTarget:self action:@selector(textFieldDidEditingEnd:) forControlEvents:UIControlEventEditingDidEnd];
     }
-    return YES;
+}
+
+- (void)textFieldDidEditingEnd:(UITextField *)textfield
+{
+    if (textfield.text.length != 0) {
+        [ZYBuryPointRequest.shareBPR searchBuryPointAction:[ZYBuryPointProcess getCurrentVC] searchKey:textfield.text];
+    }
 }
 
 @end
