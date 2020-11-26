@@ -5,8 +5,16 @@
 //  Created by 张宇 on 2020/11/19.
 //
 
+//
+//  UITextField+Runtime.m
+//  ZYBuryPoint
+//
+//  Created by 张宇 on 2020/11/19.
+//
+
 #import "UITextField+Runtime.h"
 #import <objc/runtime.h>
+#import <Aspects/Aspects.h>
 
 @implementation UITextField (Runtime)
 
@@ -14,7 +22,6 @@
 {
     static dispatch_once_t onceGcd;
     dispatch_once(&onceGcd, ^{
-        
         SEL systemDelegateSel = @selector(setReturnKeyType:);
         SEL newDelegateSel = @selector(newSetReturnKeyType:);
         Method systemDelegateMTH = class_getInstanceMethod([self class], systemDelegateSel);
@@ -28,17 +35,34 @@
     });
 }
 
-- (void)newSetReturnKeyType:(UIReturnKeyType)returnKeyType
+- (UIReturnKeyType)returnType
 {
-    if (returnKeyType == UIReturnKeySearch) {
-        [self addTarget:self action:@selector(textFieldDidEditingEnd:) forControlEvents:UIControlEventEditingDidEnd];
-    }
+    return [objc_getAssociatedObject(self, @"returnType") integerValue] > 0 ? [objc_getAssociatedObject(self, @"returnType") integerValue] : UIReturnKeyDefault;
 }
 
-- (void)textFieldDidEditingEnd:(UITextField *)textfield
+- (void)setReturnType:(UIReturnKeyType)returnType
 {
-    if (textfield.text.length != 0) {
-        [ZYBuryPointRequest.shareBPR searchBuryPointAction:[ZYBuryPointProcess getCurrentVC] searchKey:textfield.text];
+    objc_setAssociatedObject(self, @"returnType", @(returnType), OBJC_ASSOCIATION_ASSIGN);
+}
+
+- (UIReturnKeyType)returnKeyType
+{
+    return self.returnType;
+}
+
+- (void)newSetReturnKeyType:(UIReturnKeyType)returnKeyType
+{
+    self.returnType = returnKeyType;
+    if (returnKeyType == UIReturnKeySearch) {
+        id superClass = self.delegate;
+        [superClass aspect_hookSelector:@selector(textFieldShouldReturn:) withOptions:AspectPositionAfter usingBlock:^(id<AspectInfo> aspectInfo) {
+            for (id obj in aspectInfo.arguments) {
+                if ([obj isEqual:self]) {
+                    [ZYBuryPointRequest.shareBPR searchBuryPointAction:[ZYBuryPointProcess getCurrentVC] searchKey:self.text];
+                    break;
+                }
+            }
+        } error:nil];
     }
 }
 

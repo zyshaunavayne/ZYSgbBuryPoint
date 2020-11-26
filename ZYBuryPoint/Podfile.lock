@@ -14,17 +14,21 @@ PODS:
   - AFNetworking/Serialization (3.2.1)
   - AFNetworking/UIKit (3.2.1):
     - AFNetworking/NSURLSession
+  - Aspects (1.4.1)
 
 DEPENDENCIES:
   - AFNetworking (= 3.2.1)
+  - Aspects
 
 SPEC REPOS:
   trunk:
     - AFNetworking
+    - Aspects
 
 SPEC CHECKSUMS:
   AFNetworking: b6f891fdfaed196b46c7a83cf209e09697b94057
+  Aspects: 7595ba96a6727a58ebcbfc954497fc5d2fdde546
 
-PODFILE CHECKSUM: 38235435274ec2fe4d076553126d26ed49172de3
+PODFILE CHECKSUM: 1f3e79cbf1b4566c576a8c20579d0bce4f4f7e2a
 
 COCOAPODS: 1.10.0
