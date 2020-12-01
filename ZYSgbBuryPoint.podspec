@@ -14,5 +14,4 @@ Pod::Spec.new do |spec|
   spec.frameworks   = "Foundation","UIKit"
   spec.source       = { git: "https://github.com/zyshaunavayne/ZYSgbBuryPoint.git", tag: spec.version, submodules: true }
   spec.source_files  = "ZYBuryPoint/ZYBuryPoint/*.{h,m}"
-  spec.public_header_files = "ZYBuryPoint/ZYBuryPoint/{ZYBuryPoint,ZYBuryPointManager}.h"
 end
