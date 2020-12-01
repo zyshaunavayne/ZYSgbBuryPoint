@@ -2,7 +2,7 @@
 Pod::Spec.new do |spec|
 
   spec.name         = "ZYSgbBuryPoint"
-  spec.version      = "0.2.2"
+  spec.version      = "0.2.3"
   spec.summary      = "ZYSgbBuryPoint"
   spec.description  = "runtime based bury point sdk for sgb."
   spec.homepage     = "https://github.com/zyshaunavayne/ZYSgbBuryPoint"
@@ -14,5 +14,5 @@ Pod::Spec.new do |spec|
   spec.frameworks   = "Foundation","UIKit"
   spec.source       = { git: "https://github.com/zyshaunavayne/ZYSgbBuryPoint.git", tag: spec.version, submodules: true }
   spec.source_files  = "ZYBuryPoint/ZYBuryPoint/*.{h,m}"
-  spec.public_header_files = "ZYBuryPoint/ZYBuryPoint/ZYBuryPoint.h","ZYBuryPoint/ZYBuryPoint/ZYBuryPointManager.h"
+  spec.public_header_files = "ZYBuryPoint/ZYBuryPoint/{ZYBuryPoint,ZYBuryPointManager}.h"
 end
