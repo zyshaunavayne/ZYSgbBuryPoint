@@ -9,6 +9,7 @@
 #import "ZYBuryPointRequest.h"
 #import "UIViewController+Runtime.h"
 #import "UITextField+Runtime.h"
+#import "ZYBuryPointVCInfoModel.h"
 
 NS_ASSUME_NONNULL_BEGIN
 
@@ -22,6 +23,9 @@ NS_ASSUME_NONNULL_BEGIN
 
 /// 设置埋点url
 @property (nonatomic, copy) NSString *buryPointUrl;
+
+/// 页面信息数组
+@property (nonatomic, copy) NSArray <ZYBuryPointVCInfoModel *>*vcinfoArray;
 
 /// 创建并监听username
 /// @param model username对应的model
@@ -43,15 +47,9 @@ NS_ASSUME_NONNULL_BEGIN
 /// 调用此方法前请先配置request信息
 - (void)openSGBBuryPointAction;
 
-/// 打开app时，在appdelegate协议中调用  调用此方法前请先配置request信息
-- (void)enterAppBuryPointAction;
-
-/// 手机锁屏、Home时在appdelegate中调用  调用此方法前请先配置request信息
-- (void)leveaAppBuryPointAction;
-
-/// 用户信息中username参数
+/// 用户信息中userid参数
 /// 此参数为动态变化
-@property (nonatomic, copy) NSString *username;
+@property (nonatomic, copy) NSString *userId;
 
 @end
 

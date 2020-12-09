@@ -39,12 +39,6 @@ NS_ASSUME_NONNULL_BEGIN
 /// @param superVC 父类
 - (void)endBuryPointAction:(UIViewController *)superVC;
 
-/// 进入app埋点
-- (void)enterAppBuryPointAction;
-
-/// 离开app埋点
-- (void)leveaAppBuryPointAction;
-
 /// 搜索埋点 在#import "UITextField+Runtime.h"中交换return方法触发
 /// @param superVC 当前页面
 /// @param searchKey 搜索关键词

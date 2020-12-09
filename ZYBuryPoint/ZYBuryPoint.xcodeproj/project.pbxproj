@@ -15,6 +15,7 @@
 		2A24CD0B25628E4600EE79FB /* ZYBuryPointRequestModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 2A24CD0325628E4600EE79FB /* ZYBuryPointRequestModel.m */; };
 		2A6A4EF4257E0D530051C4EB /* ZYBuryPointRequestBusinessModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 2A6A4EF3257E0D530051C4EB /* ZYBuryPointRequestBusinessModel.m */; };
 		2A6C7395256664F400869AB0 /* UITextField+Runtime.m in Sources */ = {isa = PBXBuildFile; fileRef = 2A6C7394256664F400869AB0 /* UITextField+Runtime.m */; };
+		2A81F5972580C2D10026B1F2 /* ZYBuryPointVCInfoModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 2A81F5962580C2D10026B1F2 /* ZYBuryPointVCInfoModel.m */; };
 		BD3F7755A3B16E3D4D05EEA0 /* libPods-ZYBuryPoint.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 611D1BE0447904B390BBF35A /* libPods-ZYBuryPoint.a */; };
 /* End PBXBuildFile section */
 
@@ -49,6 +50,8 @@
 		2A6C7393256664F400869AB0 /* UITextField+Runtime.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "UITextField+Runtime.h"; sourceTree = "<group>"; };
 		2A6C7394256664F400869AB0 /* UITextField+Runtime.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "UITextField+Runtime.m"; sourceTree = "<group>"; };
 		2A701EE9255B90E800C23484 /* libZYBuryPoint.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libZYBuryPoint.a; sourceTree = BUILT_PRODUCTS_DIR; };
+		2A81F5952580C2D10026B1F2 /* ZYBuryPointVCInfoModel.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ZYBuryPointVCInfoModel.h; sourceTree = "<group>"; };
+		2A81F5962580C2D10026B1F2 /* ZYBuryPointVCInfoModel.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ZYBuryPointVCInfoModel.m; sourceTree = "<group>"; };
 		4B74DA430F267A03B2D886CA /* Pods-ZYBuryPoint.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ZYBuryPoint.release.xcconfig"; path = "Target Support Files/Pods-ZYBuryPoint/Pods-ZYBuryPoint.release.xcconfig"; sourceTree = "<group>"; };
 		611D1BE0447904B390BBF35A /* libPods-ZYBuryPoint.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-ZYBuryPoint.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		B14E70F933E627BD56A4C86C /* Pods-ZYBuryPoint.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ZYBuryPoint.debug.xcconfig"; path = "Target Support Files/Pods-ZYBuryPoint/Pods-ZYBuryPoint.debug.xcconfig"; sourceTree = "<group>"; };
@@ -102,6 +105,8 @@
 				2A24CCFC25628E4500EE79FB /* ZYBuryPointRequestBaseModel.m */,
 				2A24CD0225628E4600EE79FB /* ZYBuryPointRequestModel.h */,
 				2A24CD0325628E4600EE79FB /* ZYBuryPointRequestModel.m */,
+				2A81F5952580C2D10026B1F2 /* ZYBuryPointVCInfoModel.h */,
+				2A81F5962580C2D10026B1F2 /* ZYBuryPointVCInfoModel.m */,
 				2A6A4EF2257E0D530051C4EB /* ZYBuryPointRequestBusinessModel.h */,
 				2A6A4EF3257E0D530051C4EB /* ZYBuryPointRequestBusinessModel.m */,
 			);
@@ -208,6 +213,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				2A24CD0825628E4600EE79FB /* ZYBuryPointRequestBaseModel.m in Sources */,
+				2A81F5972580C2D10026B1F2 /* ZYBuryPointVCInfoModel.m in Sources */,
 				2A24CD0B25628E4600EE79FB /* ZYBuryPointRequestModel.m in Sources */,
 				2A24CD0925628E4600EE79FB /* UIViewController+Runtime.m in Sources */,
 				2A6A4EF4257E0D530051C4EB /* ZYBuryPointRequestBusinessModel.m in Sources */,

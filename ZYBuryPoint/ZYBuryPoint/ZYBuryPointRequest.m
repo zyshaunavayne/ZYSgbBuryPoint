@@ -38,6 +38,7 @@ static NSString *firstOpenKey = @"ZYBuryPointRequest+firstOpenKey";
         _requestBaseModel.visitId = [ZYBuryPointProcess archiveDataWithKey:firstOpenKey];
         _requestBaseModel.serviceProvider = [_requestBaseModel netServer];
     }
+    _requestBaseModel.userId = [ZYBuryPointProcess check:ZYBuryPointManager.manager.userId];
     return _requestBaseModel;
 }
 
@@ -45,14 +46,9 @@ static NSString *firstOpenKey = @"ZYBuryPointRequest+firstOpenKey";
 {
     [self.requestBaseModel locationAction:^{ //先获取经纬度 在开始埋点
         //基础信息埋点
-        NSMutableDictionary *proDic = NSMutableDictionary.alloc.init;
-        self.requestBaseModel.userId = [ZYBuryPointProcess check:ZYBuryPointManager.manager.username];
-        
+        NSMutableDictionary *proDic = NSMutableDictionary.alloc.init;        
         [proDic setDictionary:self.requestBaseModel.toDictionary];
         [self requestUrl:[NSString stringWithFormat:@"%@%@",ZYBuryPointManager.manager.request.serverAdress,ZYBuryPointManager.manager.request.baseUrl] proDic:proDic success:^(id _Nonnull success) {}];
-        
-        //开启app进去时埋点
-        [self enterAppBuryPointAction];
     }];
 }
 
@@ -60,11 +56,8 @@ static NSString *firstOpenKey = @"ZYBuryPointRequest+firstOpenKey";
 {
     if (!_requestModel) {
         _requestModel = ZYBuryPointRequestModel.alloc.init;
-//        _requestModel.operatingSystem = [NSString stringWithFormat:@"iOS_%@",[[UIDevice currentDevice] systemVersion]];
-//        _requestModel.phoneCode = [UIDevice.currentDevice.identifierForVendor UUIDString];
         _requestModel.visitId = [ZYBuryPointProcess archiveDataWithKey:firstOpenKey];
     }
-//    _requestModel.userName = [ZYBuryPointProcess check:ZYBuryPointManager.manager.username];
     return _requestModel;
 }
 
@@ -76,34 +69,22 @@ static NSString *firstOpenKey = @"ZYBuryPointRequest+firstOpenKey";
 - (void)beginBuryPointAction:(UIViewController *)superVC
 {
     NSString *classStr = [NSString stringWithFormat:@"%@%@",NSStringFromClass(superVC.class),[ZYBuryPointProcess check:superVC.title]];
-//    self.requestModel.timeStampPageStart = ZYBuryPointProcess.timeStap;
+    self.requestModel.stratTime = ZYBuryPointProcess.timeStap;
     [ZYBuryPointProcess saveData:ZYBuryPointProcess.timeStap key:classStr];
-//    self.requestModel.pageView = [ZYBuryPointProcess check:superVC.title];
+    self.requestModel.endTime = @"";
+    self.requestModel.title = [ZYBuryPointProcess check:superVC.title];
+    self.requestModel.titleId = [self getTitleIdWithVC:superVC];
     [self requestAction];
 }
 
 - (void)endBuryPointAction:(UIViewController *)superVC
 {
     NSString *classStr = [NSString stringWithFormat:@"%@%@",NSStringFromClass(superVC.class),[ZYBuryPointProcess check:superVC.title]];
-//    self.requestModel.timeStampPageStart = [ZYBuryPointProcess check:[ZYBuryPointProcess archiveDataWithKey:classStr]];
+    self.requestModel.stratTime = [ZYBuryPointProcess check:[ZYBuryPointProcess archiveDataWithKey:classStr]];
     [ZYBuryPointProcess removeDataWithKey:classStr];
-//    self.requestModel.timeStampPageEnd = ZYBuryPointProcess.timeStap;
-//    self.requestModel.pageView = [ZYBuryPointProcess check:superVC.title];
-    [self requestAction];
-}
-
-- (void)enterAppBuryPointAction
-{
-    [ZYBuryPointProcess saveData:ZYBuryPointProcess.timeStap key:@"enterAppBuryPointAction"];
-//    self.requestModel.timeStampStart = ZYBuryPointProcess.timeStap;
-    [self requestAction];
-}
-
-- (void)leveaAppBuryPointAction
-{
-//    self.requestModel.timeStampStart = [ZYBuryPointProcess check:[ZYBuryPointProcess archiveDataWithKey:@"enterAppBuryPointAction"]];
-//    self.requestModel.timeStampEnd = ZYBuryPointProcess.timeStap;
-    [ZYBuryPointProcess removeDataWithKey:@"enterAppBuryPointAction"];
+    self.requestModel.endTime = ZYBuryPointProcess.timeStap;
+    self.requestModel.title = [ZYBuryPointProcess check:superVC.title];
+    self.requestModel.titleId = [self getTitleIdWithVC:superVC];
     [self requestAction];
 }
 
@@ -113,7 +94,22 @@ static NSString *firstOpenKey = @"ZYBuryPointRequest+firstOpenKey";
 //    self.requestModel.timeStampPageStart = [ZYBuryPointProcess check:[ZYBuryPointProcess archiveDataWithKey:classStr]];
 //    self.requestModel.pageView = [ZYBuryPointProcess check:superVC.title];
 //    self.requestModel.searchTerms = [ZYBuryPointProcess check:searchKey];
-    [self requestAction];
+//    [self requestAction];
+}
+
+- (NSString *)getTitleIdWithVC:(UIViewController *)superVC
+{
+    NSArray *numberArray = ZYBuryPointManager.manager.request.vcinfoArray;
+    NSString *vcInfo = NSStringFromClass(superVC.class);
+    NSString *string = @"";
+    for (int i = 0; i < numberArray.count; i ++) {
+        ZYBuryPointVCInfoModel *model = numberArray[i];
+        if ([vcInfo isEqualToString:model.iOS]) {
+            string = model.titleId;
+            break;
+        }
+    }
+    return string;
 }
 
 - (void)requestAction

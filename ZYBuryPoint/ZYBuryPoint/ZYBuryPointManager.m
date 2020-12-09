@@ -20,7 +20,7 @@
 - (void)observeValueForKeyPath:(NSString *)keyPath ofObject:(id)object change:(NSDictionary<NSKeyValueChangeKey,id> *)change context:(void *)context
 {
     if (object && keyPath) {
-        ZYBuryPointManager.manager.username = [self archive:object key:keyPath];
+        ZYBuryPointManager.manager.userId = [self archive:object key:keyPath];
     }
 }
 
@@ -84,26 +84,6 @@ static ZYBuryPointManager *instance = nil;
         
         //开启默认埋点信息记录
         [ZYBuryPointRequest.shareBPR requestBaseBuryPointAction];
-    }
-}
-
-- (void)enterAppBuryPointAction
-{
-    if (self.request.serverAdress.length == 0) {
-        NSLog(@"请先配置服务器地址");
-        return;
-    }else{
-        [ZYBuryPointRequest.shareBPR enterAppBuryPointAction];
-    }
-}
-
-- (void)leveaAppBuryPointAction
-{
-    if (self.request.serverAdress.length == 0) {
-        NSLog(@"请先配置服务器地址");
-        return;
-    }else{
-        [ZYBuryPointRequest.shareBPR leveaAppBuryPointAction];
     }
 }
 
