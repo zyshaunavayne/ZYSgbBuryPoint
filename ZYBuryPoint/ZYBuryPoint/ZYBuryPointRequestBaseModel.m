@@ -382,8 +382,8 @@ NSString *const kZYBuryPointRequestBaseModelCode = @"code";
 
 - (NSString *)devicerp
 {
-    NSInteger width = UIScreen.mainScreen.bounds.size.width * UIScreen.mainScreen.scale;
-    NSInteger height = UIScreen.mainScreen.bounds.size.height * UIScreen.mainScreen.scale;
+    NSInteger width = (NSInteger)(UIScreen.mainScreen.bounds.size.width * UIScreen.mainScreen.scale);
+    NSInteger height = (NSInteger)(UIScreen.mainScreen.bounds.size.height * UIScreen.mainScreen.scale);
     return [NSString stringWithFormat:@"%ld*%ld",width,height];
 }
 

@@ -46,7 +46,7 @@ static NSString *firstOpenKey = @"ZYBuryPointRequest+firstOpenKey";
 {
     [self.requestBaseModel locationAction:^{ //先获取经纬度 在开始埋点
         //基础信息埋点
-        NSMutableDictionary *proDic = NSMutableDictionary.alloc.init;        
+        NSMutableDictionary *proDic = NSMutableDictionary.alloc.init;
         [proDic setDictionary:self.requestBaseModel.toDictionary];
         [self requestUrl:[NSString stringWithFormat:@"%@%@",ZYBuryPointManager.manager.request.serverAdress,ZYBuryPointManager.manager.request.baseUrl] proDic:proDic success:^(id _Nonnull success) {}];
     }];
@@ -90,7 +90,7 @@ static NSString *firstOpenKey = @"ZYBuryPointRequest+firstOpenKey";
 
 - (void)searchBuryPointAction:(UIViewController *)superVC searchKey:(NSString *)searchKey
 {
-    NSString *classStr = [NSString stringWithFormat:@"%@%@",NSStringFromClass(superVC.class),[ZYBuryPointProcess check:superVC.title]];
+//    NSString *classStr = [NSString stringWithFormat:@"%@%@",NSStringFromClass(superVC.class),[ZYBuryPointProcess check:superVC.title]];
 //    self.requestModel.timeStampPageStart = [ZYBuryPointProcess check:[ZYBuryPointProcess archiveDataWithKey:classStr]];
 //    self.requestModel.pageView = [ZYBuryPointProcess check:superVC.title];
 //    self.requestModel.searchTerms = [ZYBuryPointProcess check:searchKey];
