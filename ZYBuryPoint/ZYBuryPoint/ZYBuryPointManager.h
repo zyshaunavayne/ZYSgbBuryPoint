@@ -24,8 +24,11 @@ NS_ASSUME_NONNULL_BEGIN
 /// 设置埋点url
 @property (nonatomic, copy) NSString *buryPointUrl;
 
-/// 页面信息数组
-@property (nonatomic, copy) NSArray <ZYBuryPointVCInfoModel *>*vcinfoArray;
+/// 页面信息数组 源数据
+@property (nonatomic, copy) NSArray *originVCInoArray;
+
+/// 页面信息数组   key:class name  value:class model信息 <ZYBuryPointVCInfoModel *>
+@property (nonatomic, strong) NSMutableDictionary *vcInfoDic;
 
 /// 创建并监听username
 /// @param model username对应的model

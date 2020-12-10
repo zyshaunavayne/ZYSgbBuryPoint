@@ -68,23 +68,25 @@ static NSString *firstOpenKey = @"ZYBuryPointRequest+firstOpenKey";
 
 - (void)beginBuryPointAction:(UIViewController *)superVC
 {
-    NSString *classStr = [NSString stringWithFormat:@"%@%@",NSStringFromClass(superVC.class),[ZYBuryPointProcess check:superVC.title]];
+    ZYBuryPointVCInfoModel *model = [self getTitleIdWithVC:superVC];
+    NSString *classStr = [NSString stringWithFormat:@"%@%@",NSStringFromClass(superVC.class),model.title];
     self.requestModel.stratTime = ZYBuryPointProcess.timeStap;
     [ZYBuryPointProcess saveData:ZYBuryPointProcess.timeStap key:classStr];
     self.requestModel.endTime = @"";
-    self.requestModel.title = [ZYBuryPointProcess check:superVC.title];
-    self.requestModel.titleId = [self getTitleIdWithVC:superVC];
+    self.requestModel.title = model.title;
+    self.requestModel.titleId = model.titleId;
     [self requestAction];
 }
 
 - (void)endBuryPointAction:(UIViewController *)superVC
 {
-    NSString *classStr = [NSString stringWithFormat:@"%@%@",NSStringFromClass(superVC.class),[ZYBuryPointProcess check:superVC.title]];
+    ZYBuryPointVCInfoModel *model = [self getTitleIdWithVC:superVC];
+    NSString *classStr = [NSString stringWithFormat:@"%@%@",NSStringFromClass(superVC.class),model.title];
     self.requestModel.stratTime = [ZYBuryPointProcess check:[ZYBuryPointProcess archiveDataWithKey:classStr]];
     [ZYBuryPointProcess removeDataWithKey:classStr];
     self.requestModel.endTime = ZYBuryPointProcess.timeStap;
-    self.requestModel.title = [ZYBuryPointProcess check:superVC.title];
-    self.requestModel.titleId = [self getTitleIdWithVC:superVC];
+    self.requestModel.title = model.title;
+    self.requestModel.titleId = model.titleId;
     [self requestAction];
 }
 
@@ -97,19 +99,11 @@ static NSString *firstOpenKey = @"ZYBuryPointRequest+firstOpenKey";
 //    [self requestAction];
 }
 
-- (NSString *)getTitleIdWithVC:(UIViewController *)superVC
+- (ZYBuryPointVCInfoModel *)getTitleIdWithVC:(UIViewController *)superVC
 {
-    NSArray *numberArray = ZYBuryPointManager.manager.request.vcinfoArray;
     NSString *vcInfo = NSStringFromClass(superVC.class);
-    NSString *string = @"";
-    for (int i = 0; i < numberArray.count; i ++) {
-        ZYBuryPointVCInfoModel *model = numberArray[i];
-        if ([vcInfo isEqualToString:model.iOS]) {
-            string = model.titleId;
-            break;
-        }
-    }
-    return string;
+    ZYBuryPointVCInfoModel *model = [ZYBuryPointManager.manager.request.vcInfoDic objectForKey:vcInfo];
+    return model;
 }
 
 - (void)requestAction
