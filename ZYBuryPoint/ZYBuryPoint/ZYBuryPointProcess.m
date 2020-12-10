@@ -66,4 +66,32 @@
     return currentVC;
 }
 
++ (UIViewController *)getViewCurrentVCFromView:(id)view
+{
+    if (!view) {
+        return nil;
+    }
+    
+    UIViewController *result = nil;
+    UIWindow *window = UIApplication.sharedApplication.keyWindow;
+    if(window.windowLevel != UIWindowLevelNormal) {
+        NSArray *windows = UIApplication.sharedApplication.windows;
+        for(UIWindow *tmpWin in windows) {
+            if(tmpWin.windowLevel == UIWindowLevelNormal) {
+                window = tmpWin;
+                break;
+            }
+        }
+    }
+    id nextResponder = [view nextResponder];
+    if ([nextResponder isKindOfClass:[UIViewController class]]) {
+        result = nextResponder;
+    } else if ([nextResponder isKindOfClass:[UIView class]] || [nextResponder isKindOfClass:[UIButton class]] || [nextResponder isKindOfClass:[UILabel class]] || [nextResponder isKindOfClass:[UIImageView class]] || [nextResponder isKindOfClass:[UITableView class]] || [nextResponder isKindOfClass:[UIScrollView class]] || [nextResponder isKindOfClass:[UICollectionView class]] || [nextResponder isKindOfClass:[UICollectionViewCell class]] || [nextResponder isKindOfClass:[UITableViewCell class]] || [nextResponder isKindOfClass:[UITableViewHeaderFooterView class]] || [nextResponder isKindOfClass:[UITableViewHeaderFooterView class]]) {
+        result = [self getViewCurrentVCFromView:nextResponder];
+    } else {
+        result = nil;
+    }
+    return result;
+}
+
 @end

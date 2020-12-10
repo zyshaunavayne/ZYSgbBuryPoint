@@ -53,7 +53,12 @@
 - (void)newSendAction:(SEL)action to:(id)target forEvent:(UIEvent *)event
 {
     NSLog(@"你点到我了");
-    NSLog(@"self == %@",self);
+    if (self.reportingEvent && self.reportingTask && self.reportingUrl) {
+        /*
+         只有设置了上报类型、上报url、上报Task的点击事件才会被记录
+         */
+        [ZYBuryPointRequest.shareBPR beginTaskBuryPointAction:self];
+    }
     [self newSendAction:action to:target forEvent:event];
 }
 

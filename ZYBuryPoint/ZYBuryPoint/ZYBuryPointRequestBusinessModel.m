@@ -16,7 +16,7 @@
 NSString *const kZYBuryPointRequestBusinessModelContent = @"content";
 NSString *const kZYBuryPointRequestBusinessModelEvent = @"event";
 NSString *const kZYBuryPointRequestBusinessModelReportingEvent = @"reportingEvent";
-NSString *const kZYBuryPointRequestBusinessModelRequestMethod = @"requestMethod";
+NSString *const kZYBuryPointRequestBusinessModelRequestMethod = @"requestUri";
 NSString *const kZYBuryPointRequestBusinessModelTask = @"task";
 NSString *const kZYBuryPointRequestBusinessModelTime = @"time";
 NSString *const kZYBuryPointRequestBusinessModelTitleId = @"titleId";
@@ -47,7 +47,7 @@ NSString *const kZYBuryPointRequestBusinessModelYAxis = @"yAxis";
         self.reportingEvent = dictionary[kZYBuryPointRequestBusinessModelReportingEvent];
     }
     if(![dictionary[kZYBuryPointRequestBusinessModelRequestMethod] isKindOfClass:[NSNull class]]){
-        self.requestMethod = dictionary[kZYBuryPointRequestBusinessModelRequestMethod];
+        self.requestUrl = dictionary[kZYBuryPointRequestBusinessModelRequestMethod];
     }
     if(![dictionary[kZYBuryPointRequestBusinessModelTask] isKindOfClass:[NSNull class]]){
         self.task = dictionary[kZYBuryPointRequestBusinessModelTask];
@@ -85,8 +85,8 @@ NSString *const kZYBuryPointRequestBusinessModelYAxis = @"yAxis";
     if(self.reportingEvent != nil){
         dictionary[kZYBuryPointRequestBusinessModelReportingEvent] = self.reportingEvent;
     }
-    if(self.requestMethod != nil){
-        dictionary[kZYBuryPointRequestBusinessModelRequestMethod] = self.requestMethod;
+    if(self.requestUrl != nil){
+        dictionary[kZYBuryPointRequestBusinessModelRequestMethod] = self.requestUrl;
     }
     if(self.task != nil){
         dictionary[kZYBuryPointRequestBusinessModelTask] = self.task;
@@ -120,8 +120,8 @@ NSString *const kZYBuryPointRequestBusinessModelYAxis = @"yAxis";
     if(self.reportingEvent != nil){
         [aCoder encodeObject:self.reportingEvent forKey:kZYBuryPointRequestBusinessModelReportingEvent];
     }
-    if(self.requestMethod != nil){
-        [aCoder encodeObject:self.requestMethod forKey:kZYBuryPointRequestBusinessModelRequestMethod];
+    if(self.requestUrl != nil){
+        [aCoder encodeObject:self.requestUrl forKey:kZYBuryPointRequestBusinessModelRequestMethod];
     }
     if(self.task != nil){
         [aCoder encodeObject:self.task forKey:kZYBuryPointRequestBusinessModelTask];
@@ -144,7 +144,7 @@ NSString *const kZYBuryPointRequestBusinessModelYAxis = @"yAxis";
     self.content = [aDecoder decodeObjectForKey:kZYBuryPointRequestBusinessModelContent];
     self.event = [aDecoder decodeObjectForKey:kZYBuryPointRequestBusinessModelEvent];
     self.reportingEvent = [aDecoder decodeObjectForKey:kZYBuryPointRequestBusinessModelReportingEvent];
-    self.requestMethod = [aDecoder decodeObjectForKey:kZYBuryPointRequestBusinessModelRequestMethod];
+    self.requestUrl = [aDecoder decodeObjectForKey:kZYBuryPointRequestBusinessModelRequestMethod];
     self.task = [aDecoder decodeObjectForKey:kZYBuryPointRequestBusinessModelTask];
     self.time = [aDecoder decodeObjectForKey:kZYBuryPointRequestBusinessModelTime];
     self.titleId = [aDecoder decodeObjectForKey:kZYBuryPointRequestBusinessModelTitleId];
@@ -164,7 +164,7 @@ NSString *const kZYBuryPointRequestBusinessModelYAxis = @"yAxis";
     copy.content = [self.content copy];
     copy.event = [self.event copy];
     copy.reportingEvent = [self.reportingEvent copy];
-    copy.requestMethod = [self.requestMethod copy];
+    copy.requestUrl = [self.requestUrl copy];
     copy.task = [self.task copy];
     copy.time = [self.time copy];
     copy.titleId = [self.titleId copy];

@@ -15,8 +15,8 @@
 @property (nonatomic, strong) NSString * event;
 /// 上报事件（支付，查询，搜索）
 @property (nonatomic, strong) NSString * reportingEvent;
-/// 请求后台的方式（post，get，put）
-@property (nonatomic, strong) NSString * requestMethod;
+/// 请求的后台接口 子接口
+@property (nonatomic, strong) NSString * requestUrl;
 /// 用户具体操作的名称（用户点击了加入购物车按键task的值为“加入购物车”如果没有有button名称则需要自定义）
 @property (nonatomic, strong) NSString * task;
 /// 时间戳(用户进行操作的时间戳)

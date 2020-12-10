@@ -14,6 +14,7 @@
 //埋点信息
 #import "ZYBuryPointRequestModel.h"
 #import "ZYBuryPointProcess.h"
+#import "ZYBuryPointRequestBusinessModel.h"
 
 NS_ASSUME_NONNULL_BEGIN
 
@@ -22,11 +23,15 @@ NS_ASSUME_NONNULL_BEGIN
 /// 初始化
 + (instancetype)shareBPR;
 
+#pragma mark -- 基础信息埋点
+
 /// 埋点基础信息
 @property (nonatomic, strong) ZYBuryPointRequestBaseModel *requestBaseModel;
 
 /// 基础埋点操作
 - (void)requestBaseBuryPointAction;
+
+#pragma mark -- 页面埋点
 
 /// 入参
 @property (nonatomic, strong) ZYBuryPointRequestModel *requestModel;
@@ -38,6 +43,15 @@ NS_ASSUME_NONNULL_BEGIN
 /// 结束当前页面埋点
 /// @param superVC 父类
 - (void)endBuryPointAction:(UIViewController *)superVC;
+
+#pragma mark -- Task埋点
+
+/// 入参
+@property (nonatomic, strong) ZYBuryPointRequestBusinessModel *requestTaskModel;
+
+/// 开始Task埋点
+/// @param clickBtn UIButton
+- (void)beginTaskBuryPointAction:(UIButton *)clickBtn;
 
 /// 搜索埋点 在#import "UITextField+Runtime.h"中交换return方法触发
 /// @param superVC 当前页面

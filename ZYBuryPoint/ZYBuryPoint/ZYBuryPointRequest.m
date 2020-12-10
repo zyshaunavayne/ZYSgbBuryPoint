@@ -72,7 +72,6 @@ static NSString *firstOpenKey = @"ZYBuryPointRequest+firstOpenKey";
     NSString *classStr = [NSString stringWithFormat:@"%@%@",NSStringFromClass(superVC.class),model.title];
     self.requestModel.stratTime = ZYBuryPointProcess.timeStap;
     [ZYBuryPointProcess saveData:ZYBuryPointProcess.timeStap key:classStr];
-    self.requestModel.endTime = @"";
     self.requestModel.title = model.title;
     self.requestModel.titleId = model.titleId;
     [self requestAction];
@@ -88,6 +87,25 @@ static NSString *firstOpenKey = @"ZYBuryPointRequest+firstOpenKey";
     self.requestModel.title = model.title;
     self.requestModel.titleId = model.titleId;
     [self requestAction];
+}
+
+- (ZYBuryPointRequestBusinessModel *)requestTaskModel
+{
+    if (!_requestTaskModel) {
+        _requestTaskModel = ZYBuryPointRequestBusinessModel.alloc.init;
+        _requestTaskModel.time = ZYBuryPointProcess.timeStap;
+    }
+    return _requestTaskModel;
+}
+
+- (void)beginTaskBuryPointAction:(UIButton *)clickBtn
+{
+    ZYBuryPointVCInfoModel *model = [self getTitleIdWithVC:[ZYBuryPointProcess getViewCurrentVCFromView:clickBtn]];
+    self.requestTaskModel.event = @"click";
+    self.requestTaskModel.reportingEvent = clickBtn.reportingEvent;
+    self.requestTaskModel.requestUrl = clickBtn.reportingUrl;
+    self.requestTaskModel.task = clickBtn.reportingTask;
+    self.requestTaskModel.titleId = model.titleId;
 }
 
 - (void)searchBuryPointAction:(UIViewController *)superVC searchKey:(NSString *)searchKey
@@ -158,7 +176,7 @@ static NSString *firstOpenKey = @"ZYBuryPointRequest+firstOpenKey";
 /// @param request 请求入参格式
 - (AFJSONRequestSerializer *)requestJsonHeaderWithContent:(AFJSONRequestSerializer *)request
 {
-    request.timeoutInterval = 30;
+    request.timeoutInterval = 10;
     [request setValue:@"application/json" forHTTPHeaderField:@"Content-Type"];
     return request;
 }

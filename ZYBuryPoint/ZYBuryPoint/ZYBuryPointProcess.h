@@ -10,6 +10,7 @@
 
 NS_ASSUME_NONNULL_BEGIN
 
+/// <#Description#>
 @interface ZYBuryPointProcess : NSObject
 
 /// 缓存数据
@@ -34,6 +35,14 @@ NS_ASSUME_NONNULL_BEGIN
 
 /// 获取当前页面
 + (UIViewController *)getCurrentVC;
+
+/// 获取当前UI控件所在的页面 
+/// @param view UIView、UILabel、Uibutton、UITableView等子控件
++ (UIViewController *)getViewCurrentVCFromView:(id )view;
+
+/// 获取当前UI控件在他所在的控制器中的相对位置
+/// @param view UIView、UILabel、Uibutton、UITableView等子控件
++ (CGSize)getViewRectInCurrentVCFromView:(id)View;
 
 @end
 
