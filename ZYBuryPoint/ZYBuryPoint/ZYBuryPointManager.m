@@ -93,7 +93,8 @@ static ZYBuryPointManager *instance = nil;
         //开启方法交换
         [UIViewController share];
         [UITextField share];
-        
+        [UIButton share];
+
         //开启默认埋点信息记录
         [ZYBuryPointRequest.shareBPR requestBaseBuryPointAction];
     }

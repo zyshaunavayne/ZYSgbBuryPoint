@@ -177,6 +177,7 @@ static NSString *firstOpenKey = @"ZYBuryPointRequest+firstOpenKey";
 
 - (NSDictionary *)proDictionaryWithProDic:(NSMutableDictionary *)proDic url:(NSString *)url
 {
+    NSLog(@"埋点信息 == %@",proDic);
     return proDic;
 }
 
