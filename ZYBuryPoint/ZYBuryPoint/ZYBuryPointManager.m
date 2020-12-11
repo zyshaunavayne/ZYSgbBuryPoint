@@ -12,10 +12,8 @@
 
 - (void)setOriginVCInoArray:(NSArray *)originVCInoArray
 {
-    NSMutableArray *listArray = NSMutableArray.alloc.init;
-    
     NSMutableDictionary *infoDic = NSMutableDictionary.alloc.init;
-    for (NSDictionary *dic in listArray) {
+    for (NSDictionary *dic in originVCInoArray) {
         ZYBuryPointVCInfoModel *model = [ZYBuryPointVCInfoModel.alloc initWithDictionary:dic];
         [infoDic setObject:model forKey:[ZYBuryPointProcess check:model.iOS]];
     }
