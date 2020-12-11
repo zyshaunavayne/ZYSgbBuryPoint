@@ -10,7 +10,6 @@
 
 NS_ASSUME_NONNULL_BEGIN
 
-/// <#Description#>
 @interface ZYBuryPointProcess : NSObject
 
 /// 缓存数据

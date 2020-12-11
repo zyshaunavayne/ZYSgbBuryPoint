@@ -2,7 +2,7 @@
 Pod::Spec.new do |spec|
 
   spec.name         = "ZYSgbBuryPoint"
-  spec.version      = "0.2.13"
+  spec.version      = "0.3.0"
   spec.summary      = "ZYSgbBuryPoint"
   spec.description  = "runtime based bury point sdk for sgb."
   spec.homepage     = "https://github.com/zyshaunavayne/ZYSgbBuryPoint"

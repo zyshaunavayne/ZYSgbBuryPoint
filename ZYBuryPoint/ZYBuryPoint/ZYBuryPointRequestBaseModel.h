@@ -8,7 +8,7 @@
 
 #import <UIKit/UIKit.h>
 
-//图片数组上传回调
+//定位回调
 typedef void(^locationBlock) (void);
 
 @interface ZYBuryPointRequestBaseModel : NSObject
