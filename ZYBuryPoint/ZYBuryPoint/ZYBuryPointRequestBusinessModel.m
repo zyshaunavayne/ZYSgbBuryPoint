@@ -59,11 +59,11 @@ NSString *const kZYBuryPointRequestBusinessModelYAxis = @"yAxis";
         self.titleId = dictionary[kZYBuryPointRequestBusinessModelTitleId];
     }
     if(![dictionary[kZYBuryPointRequestBusinessModelXAxis] isKindOfClass:[NSNull class]]){
-        self.xAxis = [dictionary[kZYBuryPointRequestBusinessModelXAxis] floatValue];
+        self.xAxis = [dictionary[kZYBuryPointRequestBusinessModelXAxis] integerValue];
     }
 
     if(![dictionary[kZYBuryPointRequestBusinessModelYAxis] isKindOfClass:[NSNull class]]){
-        self.yAxis = [dictionary[kZYBuryPointRequestBusinessModelYAxis] floatValue];
+        self.yAxis = [dictionary[kZYBuryPointRequestBusinessModelYAxis] integerValue];
     }
 
     return self;
@@ -148,8 +148,8 @@ NSString *const kZYBuryPointRequestBusinessModelYAxis = @"yAxis";
     self.task = [aDecoder decodeObjectForKey:kZYBuryPointRequestBusinessModelTask];
     self.time = [aDecoder decodeObjectForKey:kZYBuryPointRequestBusinessModelTime];
     self.titleId = [aDecoder decodeObjectForKey:kZYBuryPointRequestBusinessModelTitleId];
-    self.xAxis = [[aDecoder decodeObjectForKey:kZYBuryPointRequestBusinessModelXAxis] floatValue];
-    self.yAxis = [[aDecoder decodeObjectForKey:kZYBuryPointRequestBusinessModelYAxis] floatValue];
+    self.xAxis = [[aDecoder decodeObjectForKey:kZYBuryPointRequestBusinessModelXAxis] integerValue];
+    self.yAxis = [[aDecoder decodeObjectForKey:kZYBuryPointRequestBusinessModelYAxis] integerValue];
     return self;
 
 }

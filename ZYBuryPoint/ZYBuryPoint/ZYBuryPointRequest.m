@@ -106,15 +106,20 @@ static NSString *firstOpenKey = @"ZYBuryPointRequest+firstOpenKey";
     self.requestTaskModel.requestUrl = clickBtn.reportingUrl;
     self.requestTaskModel.task = clickBtn.reportingTask;
     self.requestTaskModel.titleId = model.titleId;
+    CGPoint point = [ZYBuryPointProcess getViewPointInCurrentVCFromView:clickBtn];
+    self.requestTaskModel.xAxis = [[NSString stringWithFormat:@"%lf",point.x] integerValue];
+    self.requestTaskModel.yAxis = [[NSString stringWithFormat:@"%lf",point.y] integerValue];
+    [self taskRequestAction];
 }
 
 - (void)searchBuryPointAction:(UIViewController *)superVC searchKey:(NSString *)searchKey
 {
-//    NSString *classStr = [NSString stringWithFormat:@"%@%@",NSStringFromClass(superVC.class),[ZYBuryPointProcess check:superVC.title]];
-//    self.requestModel.timeStampPageStart = [ZYBuryPointProcess check:[ZYBuryPointProcess archiveDataWithKey:classStr]];
-//    self.requestModel.pageView = [ZYBuryPointProcess check:superVC.title];
-//    self.requestModel.searchTerms = [ZYBuryPointProcess check:searchKey];
-//    [self requestAction];
+    ZYBuryPointVCInfoModel *model = [self getTitleIdWithVC:superVC];
+    self.requestTaskModel.event = @"keydown";
+    self.requestTaskModel.reportingEvent = @"搜索";
+    self.requestTaskModel.titleId = model.titleId;
+    self.requestTaskModel.content = searchKey;
+    [self taskRequestAction];
 }
 
 - (ZYBuryPointVCInfoModel *)getTitleIdWithVC:(UIViewController *)superVC
@@ -128,12 +133,19 @@ static NSString *firstOpenKey = @"ZYBuryPointRequest+firstOpenKey";
 {
     NSMutableDictionary *proDic = NSMutableDictionary.alloc.init;
     [proDic setDictionary:self.requestModel.toDictionary];
-    [self requestUrl:[NSString stringWithFormat:@"%@%@",ZYBuryPointManager.manager.request.serverAdress,ZYBuryPointManager.manager.request.buryPointUrl] proDic:proDic success:^(id _Nonnull success) {}];
+    [self requestUrl:[NSString stringWithFormat:@"%@%@",ZYBuryPointManager.manager.request.serverAdress,ZYBuryPointManager.manager.request.vcBuryPointUrl] proDic:proDic success:^(id _Nonnull success) {}];
+}
+
+- (void)taskRequestAction
+{
+    NSMutableDictionary *proDic = NSMutableDictionary.alloc.init;
+    [proDic setDictionary:self.requestTaskModel.toDictionary];
+    [self requestUrl:[NSString stringWithFormat:@"%@%@",ZYBuryPointManager.manager.request.serverAdress,ZYBuryPointManager.manager.request.taskBuryPointUrl] proDic:proDic success:^(id _Nonnull success) {}];
 }
 
 #pragma mark -- 以下可忽略
 #pragma mark --
-#pragma mark -- 埋点独立网络请求方式
+#pragma mark -- 埋点独立网络请求方式 默认不处理返回结果 result
 - (void)requestUrl:(NSString *)url
             proDic:(NSMutableDictionary *)proDic
            success:(void (^)(id _Nonnull))result
@@ -164,10 +176,10 @@ static NSString *firstOpenKey = @"ZYBuryPointRequest+firstOpenKey";
             if ([[dic objectForKey:@"state"] isEqualToString:@"OK"]) {
                 result(dic);
             }else{
-                NSLog(@"接口返回数据异常");
+                NSLog(@"埋点接口返回数据异常");
             }
         } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
-            NSLog(@"POST连接服务器异常 == %@",[error description]);
+            NSLog(@"埋点连接服务器异常 == %@",[error description]);
         }];
     });
 }
@@ -193,9 +205,11 @@ static NSString *firstOpenKey = @"ZYBuryPointRequest+firstOpenKey";
     return response;
 }
 
+/// 配置固定参数
+/// @param proDic 入参
+/// @param url url
 - (NSDictionary *)proDictionaryWithProDic:(NSMutableDictionary *)proDic url:(NSString *)url
 {
-    NSLog(@"埋点信息 == %@",proDic);
     return proDic;
 }
 

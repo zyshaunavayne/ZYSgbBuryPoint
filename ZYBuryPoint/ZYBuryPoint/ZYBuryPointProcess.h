@@ -36,13 +36,17 @@ NS_ASSUME_NONNULL_BEGIN
 /// 获取当前页面
 + (UIViewController *)getCurrentVC;
 
-/// 获取当前UI控件所在的页面 
+/// 强制获取当前UI控件所在的页面 性能较低
 /// @param view UIView、UILabel、Uibutton、UITableView等子控件
 + (UIViewController *)getViewCurrentVCFromView:(id )view;
 
-/// 获取当前UI控件在他所在的控制器中的相对位置
-/// @param View UIView、UILabel、Uibutton、UITableView等子控件
-+ (CGSize)getViewRectInCurrentVCFromView:(id)View;
+/// 获取当前UI控件在父类vc上的相对位置和大小
+/// @param view UIView、UILabel、Uibutton、UITableView等子控件
++ (CGRect)getViewRectInCurrentVCFromView:(id)view;
+
+/// 获取当前UI控件在父类vc上的相对位置的中心点位置
+/// @param view UIView、UILabel、Uibutton、UITableView等子控件
++ (CGPoint)getViewPointInCurrentVCFromView:(id)view;
 
 @end
 

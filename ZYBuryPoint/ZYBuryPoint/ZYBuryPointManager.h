@@ -16,14 +16,17 @@ NS_ASSUME_NONNULL_BEGIN
 
 @interface ZYBuryPointManagerRequest : NSObject
 
-/// 设置服务器地址
+/// 设置服务器地址 不能为空
 @property (nonatomic, copy) NSString *serverAdress;
 
-/// 设置基础信息url
+/// 设置基础信息url 不能为空
 @property (nonatomic, copy) NSString *baseUrl;
 
-/// 设置埋点url
-@property (nonatomic, copy) NSString *buryPointUrl;
+/// 设置页面埋点url 不能为空
+@property (nonatomic, copy) NSString *vcBuryPointUrl;
+
+/// 设置Task埋点url 不能为空
+@property (nonatomic, copy) NSString *taskBuryPointUrl;
 
 /// 页面信息数组 源数据
 @property (nonatomic, copy) NSArray *originVCInoArray;

@@ -94,4 +94,19 @@
     return result;
 }
 
++ (CGRect)getViewRectInCurrentVCFromView:(id)view
+{
+    UIViewController *vc = [self getViewCurrentVCFromView:view];
+    UIView *currentView = (UIView *)view;
+    CGRect rect= [currentView convertRect:currentView.bounds toView:vc.view];
+    return  rect;
+}
+
++ (CGPoint)getViewPointInCurrentVCFromView:(id)view
+{
+    CGRect rect = [self getViewRectInCurrentVCFromView:view];
+    CGPoint point = CGPointMake(rect.origin.x + rect.size.width / 2., rect.origin.y + rect.size.height / 2.);
+    return point;
+}
+
 @end

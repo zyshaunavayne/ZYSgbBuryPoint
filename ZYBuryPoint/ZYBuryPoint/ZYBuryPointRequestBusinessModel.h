@@ -24,9 +24,9 @@
 /// 该页面的ID（由前端进行自定义，自定义完成之后不再发生改变）
 @property (nonatomic, strong) NSString * titleId;
 /// x轴坐标(用户进行操作时的x轴坐标)
-@property (nonatomic, assign) CGFloat xAxis;
+@property (nonatomic, assign) NSInteger xAxis;
 /// y轴坐标(用户进行操作时的y轴坐标)
-@property (nonatomic, assign) CGFloat yAxis;
+@property (nonatomic, assign) NSInteger yAxis;
 
 -(instancetype)initWithDictionary:(NSDictionary *)dictionary;
 
