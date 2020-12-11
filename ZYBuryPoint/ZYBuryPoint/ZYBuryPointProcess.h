@@ -41,7 +41,7 @@ NS_ASSUME_NONNULL_BEGIN
 + (UIViewController *)getViewCurrentVCFromView:(id )view;
 
 /// 获取当前UI控件在他所在的控制器中的相对位置
-/// @param view UIView、UILabel、Uibutton、UITableView等子控件
+/// @param View UIView、UILabel、Uibutton、UITableView等子控件
 + (CGSize)getViewRectInCurrentVCFromView:(id)View;
 
 @end
