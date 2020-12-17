@@ -20,8 +20,8 @@ NSString *const kZYBuryPointRequestBusinessModelRequestMethod = @"requestUri";
 NSString *const kZYBuryPointRequestBusinessModelTask = @"task";
 NSString *const kZYBuryPointRequestBusinessModelTime = @"useTime";
 NSString *const kZYBuryPointRequestBusinessModelTitleId = @"titleId";
-NSString *const kZYBuryPointRequestBusinessModelXAxis = @"xAxis";
-NSString *const kZYBuryPointRequestBusinessModelYAxis = @"yAxis";
+NSString *const kZYBuryPointRequestBusinessModelXAxis = @"xxAxis";
+NSString *const kZYBuryPointRequestBusinessModelYAxis = @"yyAxis";
 
 @interface ZYBuryPointRequestBusinessModel ()
 @end
