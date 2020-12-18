@@ -170,8 +170,8 @@ static NSString *firstOpenKey = @"ZYBuryPointRequest+firstOpenKey";
         NSDictionary *infoDic = [self proDictionaryWithProDic:proDic url:url];
         
         //发起POST访问
-        [manager POST:url parameters:infoDic headers:nil progress:^(NSProgress * _Nonnull uploadProgress) {
-            
+        [manager POST:url parameters:infoDic progress:^(NSProgress * _Nonnull uploadProgress) {
+
         } success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
             NSDictionary *dic = [self check:responseObject :url];
             if ([[dic objectForKey:@"state"] isEqualToString:@"OK"]) {
