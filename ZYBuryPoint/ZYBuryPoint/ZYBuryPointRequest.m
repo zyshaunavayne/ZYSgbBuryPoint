@@ -69,6 +69,10 @@ static NSString *firstOpenKey = @"ZYBuryPointRequest+firstOpenKey";
 - (void)beginBuryPointAction:(UIViewController *)superVC
 {
     ZYBuryPointVCInfoModel *model = [self getTitleIdWithVC:superVC];
+    if (!model) {
+        NSLog(@"未记录当前页面 %@",NSStringFromClass(superVC.class));
+        return;
+    }
     NSString *classStr = [NSString stringWithFormat:@"%@%@",NSStringFromClass(superVC.class),model.title];
     self.requestModel.stratTime = ZYBuryPointProcess.timeStap;
     [ZYBuryPointProcess saveData:ZYBuryPointProcess.timeStap key:classStr];
@@ -80,6 +84,10 @@ static NSString *firstOpenKey = @"ZYBuryPointRequest+firstOpenKey";
 - (void)endBuryPointAction:(UIViewController *)superVC
 {
     ZYBuryPointVCInfoModel *model = [self getTitleIdWithVC:superVC];
+    if (!model) {
+        NSLog(@"未记录当前页面 %@",NSStringFromClass(superVC.class));
+        return;
+    }
     NSString *classStr = [NSString stringWithFormat:@"%@%@",NSStringFromClass(superVC.class),model.title];
     self.requestModel.stratTime = [ZYBuryPointProcess check:[ZYBuryPointProcess archiveDataWithKey:classStr]];
     [ZYBuryPointProcess removeDataWithKey:classStr];
@@ -101,6 +109,10 @@ static NSString *firstOpenKey = @"ZYBuryPointRequest+firstOpenKey";
 - (void)beginTaskBuryPointAction:(UIButton *)clickBtn
 {
     ZYBuryPointVCInfoModel *model = [self getTitleIdWithVC:[ZYBuryPointProcess getViewCurrentVCFromView:clickBtn]];
+    if (!model) {
+        NSLog(@"未记录当前页面");
+        return;
+    }
     self.requestTaskModel.event = @"click";
     self.requestTaskModel.reportingEvent = clickBtn.reportingEvent;
     self.requestTaskModel.requestUrl = clickBtn.reportingUrl;
@@ -115,6 +127,10 @@ static NSString *firstOpenKey = @"ZYBuryPointRequest+firstOpenKey";
 - (void)searchBuryPointAction:(UIViewController *)superVC searchKey:(NSString *)searchKey
 {
     ZYBuryPointVCInfoModel *model = [self getTitleIdWithVC:superVC];
+    if (!model) {
+        NSLog(@"未记录当前页面 %@",NSStringFromClass(superVC.class));
+        return;
+    }
     self.requestTaskModel.event = @"keydown";
     self.requestTaskModel.reportingEvent = @"搜索";
     self.requestTaskModel.titleId = model.titleId;
