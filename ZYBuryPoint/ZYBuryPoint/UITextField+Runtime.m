@@ -50,6 +50,11 @@
     return self.returnType;
 }
 
+- (void)setReturnKeyType:(UIReturnKeyType)returnKeyType
+{
+    self.returnType = returnKeyType;
+}
+
 - (void)newSetReturnKeyType:(UIReturnKeyType)returnKeyType
 {
     self.returnType = returnKeyType;
